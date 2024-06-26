@@ -39,6 +39,7 @@ MODBUS_BEGIN_DECLS
  * Maximum between :
  * - HEADER_LENGTH_TCP (7) + function (1) + address (2) + number (2)
  * - HEADER_LENGTH_RTU (1) + function (1) + address (2) + number (2) + CRC (2)
+ * - HEADER_LENGTH_D2X (Same as RTU)
  */
 #define _MIN_REQ_LENGTH 12
 
@@ -65,7 +66,8 @@ MODBUS_BEGIN_DECLS
 
 typedef enum {
     _MODBUS_BACKEND_TYPE_RTU=0,
-    _MODBUS_BACKEND_TYPE_TCP
+    _MODBUS_BACKEND_TYPE_TCP,
+    _MODBUS_BACKEND_TYPE_D2X
 } modbus_bakend_type_t;
 
 /* This structure reduces the number of params in functions and so
@@ -75,6 +77,7 @@ typedef struct _sft {
     int function;
     int t_id;
 } sft_t;
+
 
 typedef struct _modbus_backend {
     unsigned int backend_type;
@@ -98,6 +101,12 @@ typedef struct _modbus_backend {
     int (*flush) (modbus_t *ctx);
     int (*select) (modbus_t *ctx, fd_set *rfds, struct timeval *tv, int msg_length);
     int (*filter_request) (modbus_t *ctx, int slave);
+    unsigned int (*compute_response_length_from_request) (modbus_t *ctx, uint8_t *req);
+    uint8_t (*compute_meta_length_after_function) (int function, msg_type_t msg_type);
+    int (*compute_data_length_after_meta) (modbus_t *ctx, uint8_t *msg, msg_type_t msg_type);
+    int (*compute_additional_data_length) (modbus_t *ctx, uint8_t *msg, msg_type_t msg_type, int timedOut);
+    void (*compute_numbers_of_values) (const int function, uint8_t *req, uint8_t *rsp, int offset,
+                                       int *req_nb_value, int *rsp_nb_value);
 } modbus_backend_t;
 
 struct _modbus {
@@ -109,7 +118,9 @@ struct _modbus {
     int error_recovery;
     struct timeval response_timeout;
     struct timeval byte_timeout;
-    const modbus_backend_t *backend;
+    uint8_t *req_buffer;
+    uint8_t *rsp_buffer;
+    /*const*/ modbus_backend_t *backend;
     void *backend_data;
 };
 

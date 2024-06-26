@@ -31,6 +31,7 @@
 
 #include "modbus.h"
 #include "modbus-private.h"
+#include "fprintf.h"
 
 /* Internal use */
 #define MSG_LENGTH_UNDEFINED -1
@@ -41,7 +42,7 @@ const unsigned int libmodbus_version_minor = LIBMODBUS_VERSION_MINOR;
 const unsigned int libmodbus_version_micro = LIBMODBUS_VERSION_MICRO;
 
 /* Max between RTU and TCP max adu length (so TCP) */
-#define MAX_MESSAGE_LENGTH 260
+/* #define MAX_MESSAGE_LENGTH 260 */
 
 /* 3 steps are used to parse the query */
 typedef enum {
@@ -80,6 +81,8 @@ const char *modbus_strerror(int errnum) {
         return "Invalid exception code";
     case EMBMDATA:
         return "Too many data";
+    case EMBXTIMEOUT:
+        return "Slave CRC error";
     default:
         return strerror(errnum);
     }
@@ -87,14 +90,14 @@ const char *modbus_strerror(int errnum) {
 
 void _error_print(modbus_t *ctx, const char *context)
 {
-    if (ctx->debug) {
+    //if (ctx->debug) {
         fprintf(stderr, "ERROR %s", modbus_strerror(errno));
         if (context != NULL) {
             fprintf(stderr, ": %s\n", context);
         } else {
             fprintf(stderr, "\n");
         }
-    }
+    //}
 }
 
 int _sleep_and_flush(modbus_t *ctx)
@@ -125,7 +128,7 @@ int modbus_flush(modbus_t *ctx)
 }
 
 /* Computes the length of the expected response */
-static unsigned int compute_response_length_from_request(modbus_t *ctx, uint8_t *req)
+unsigned int _modbus_compute_response_length_from_request(modbus_t *ctx, uint8_t *req)
 {
     int length;
     const int offset = ctx->backend->header_length;
@@ -161,7 +164,7 @@ static unsigned int compute_response_length_from_request(modbus_t *ctx, uint8_t 
 /* Sends a request/response */
 static int send_msg(modbus_t *ctx, uint8_t *msg, int msg_length)
 {
-    int rc;
+    int rc = 0;
     int i;
 
     msg_length = ctx->backend->send_msg_pre(msg, msg_length);
@@ -204,7 +207,8 @@ static int send_msg(modbus_t *ctx, uint8_t *msg, int msg_length)
 int modbus_send_raw_request(modbus_t *ctx, uint8_t *raw_req, int raw_req_length)
 {
     sft_t sft;
-    uint8_t req[MAX_MESSAGE_LENGTH];
+    /* uint8_t req[MAX_MESSAGE_LENGTH]; */
+    uint8_t *req = ctx->req_buffer;
     int req_length;
 
     if (raw_req_length < 2) {
@@ -235,16 +239,10 @@ int modbus_send_raw_request(modbus_t *ctx, uint8_t *raw_req, int raw_req_length)
     ---------- Confirmation  Response ----------
 */
 
-typedef enum {
-    /* Request message on the server side */
-    MSG_INDICATION,
-    /* Request message on the client side */
-    MSG_CONFIRMATION
-} msg_type_t;
-
 /* Computes the length to read after the function received */
-static uint8_t compute_meta_length_after_function(int function,
-                                                  msg_type_t msg_type)
+uint8_t _modbus_compute_meta_length_after_function(
+    int function,
+    msg_type_t msg_type)
 {
     int length;
 
@@ -278,8 +276,10 @@ static uint8_t compute_meta_length_after_function(int function,
 }
 
 /* Computes the length to read after the meta information (address, count, etc) */
-static int compute_data_length_after_meta(modbus_t *ctx, uint8_t *msg,
-                                          msg_type_t msg_type)
+int _modbus_compute_data_length_after_meta(
+    modbus_t *ctx,
+    uint8_t *msg,
+    msg_type_t msg_type)
 {
     int function = msg[ctx->backend->header_length];
     int length;
@@ -310,6 +310,15 @@ static int compute_data_length_after_meta(modbus_t *ctx, uint8_t *msg,
     length += ctx->backend->checksum_length;
 
     return length;
+}
+
+int _modbus_compute_additional_data_length(
+    modbus_t *ctx,
+    uint8_t *msg,
+    msg_type_t msg_type,
+    int msg_length)
+{
+    return 0;
 }
 
 
@@ -364,7 +373,7 @@ static int receive_msg(modbus_t *ctx, uint8_t *msg, msg_type_t msg_type)
         p_tv = &tv;
     }
 
-    while (length_to_read != 0) {
+    while (length_to_read > 0) {
         rc = ctx->backend->select(ctx, &rfds, p_tv, length_to_read);
         if (rc == -1) {
             _error_print(ctx, "select");
@@ -381,6 +390,8 @@ static int receive_msg(modbus_t *ctx, uint8_t *msg, msg_type_t msg_type)
             }
             return -1;
         }
+
+        int timedOut = (rc == 0);
 
         rc = ctx->backend->recv(ctx, msg + msg_length, length_to_read);
         if (rc == 0) {
@@ -414,11 +425,12 @@ static int receive_msg(modbus_t *ctx, uint8_t *msg, msg_type_t msg_type)
         /* Computes remaining bytes */
         length_to_read -= rc;
 
-        if (length_to_read == 0) {
+        if (length_to_read == 0 || (timedOut && rc > 0)) {
             switch (step) {
             case _STEP_FUNCTION:
                 /* Function code position */
-                length_to_read = compute_meta_length_after_function(
+                /* length_to_read = compute_meta_length_after_function(...) */
+                length_to_read = ctx->backend->compute_meta_length_after_function(
                     msg[ctx->backend->header_length],
                     msg_type);
                 if (length_to_read != 0) {
@@ -426,7 +438,8 @@ static int receive_msg(modbus_t *ctx, uint8_t *msg, msg_type_t msg_type)
                     break;
                 } /* else switches straight to the next step */
             case _STEP_META:
-                length_to_read = compute_data_length_after_meta(
+                /* length_to_read = compute_data_length_after_meta(...) */
+                length_to_read = ctx->backend->compute_data_length_after_meta(
                     ctx, msg, msg_type);
                 if ((msg_length + length_to_read) > ctx->backend->max_adu_length) {
                     errno = EMBBADDATA;
@@ -436,6 +449,8 @@ static int receive_msg(modbus_t *ctx, uint8_t *msg, msg_type_t msg_type)
                 step = _STEP_DATA;
                 break;
             default:
+                length_to_read = ctx->backend->compute_additional_data_length(
+                    ctx, msg, msg_type, msg_length);
                 break;
             }
         }
@@ -475,6 +490,47 @@ int modbus_receive_confirmation(modbus_t *ctx, uint8_t *rsp)
     return receive_msg(ctx, rsp, MSG_CONFIRMATION);
 }
 
+void _modbus_compute_numbers_of_values(
+    const int function,
+    uint8_t *req,
+    uint8_t *rsp,
+    const int offset,
+    int *pReq_nb_value,
+    int *pRsp_nb_value)
+{
+    switch (function) {
+    case _FC_READ_COILS:
+    case _FC_READ_DISCRETE_INPUTS:
+        /* Read functions, 8 values in a byte (nb
+         * of values in the request and byte count in
+         * the response. */
+        *pReq_nb_value = (req[offset + 3] << 8) + req[offset + 4];
+        *pReq_nb_value = (*pReq_nb_value / 8) + ((*pReq_nb_value % 8) ? 1 : 0);
+        *pRsp_nb_value = rsp[offset + 1];
+        break;
+    case _FC_WRITE_AND_READ_REGISTERS:
+    case _FC_READ_HOLDING_REGISTERS:
+    case _FC_READ_INPUT_REGISTERS:
+        /* Read functions 1 value = 2 bytes */
+        *pReq_nb_value = (req[offset + 3] << 8) + req[offset + 4];
+        *pRsp_nb_value = (rsp[offset + 1] / 2);
+        break;
+    case _FC_WRITE_MULTIPLE_COILS:
+    case _FC_WRITE_MULTIPLE_REGISTERS:
+        /* N Write functions */
+        *pReq_nb_value = (req[offset + 3] << 8) + req[offset + 4];
+        *pRsp_nb_value = (rsp[offset + 3] << 8) | rsp[offset + 4];
+        break;
+    case _FC_REPORT_SLAVE_ID:
+        /* Report slave ID (bytes received) */
+        *pReq_nb_value = *pRsp_nb_value = rsp[offset + 1];
+        break;
+    default:
+        /* 1 Write functions & others */
+        *pReq_nb_value = *pRsp_nb_value = 1;
+    }
+}
+
 static int check_confirmation(modbus_t *ctx, uint8_t *req,
                               uint8_t *rsp, int rsp_length)
 {
@@ -492,7 +548,8 @@ static int check_confirmation(modbus_t *ctx, uint8_t *req,
         }
     }
 
-    rsp_length_computed = compute_response_length_from_request(ctx, req);
+    /* rsp_length_computed = compute_response_length_from_request(ctx, req); */
+    rsp_length_computed = ctx->backend->compute_response_length_from_request(ctx, req);
 
     /* Check length */
     if (rsp_length == rsp_length_computed ||
@@ -516,37 +573,8 @@ static int check_confirmation(modbus_t *ctx, uint8_t *req,
         }
 
         /* Check the number of values is corresponding to the request */
-        switch (function) {
-        case _FC_READ_COILS:
-        case _FC_READ_DISCRETE_INPUTS:
-            /* Read functions, 8 values in a byte (nb
-             * of values in the request and byte count in
-             * the response. */
-            req_nb_value = (req[offset + 3] << 8) + req[offset + 4];
-            req_nb_value = (req_nb_value / 8) + ((req_nb_value % 8) ? 1 : 0);
-            rsp_nb_value = rsp[offset + 1];
-            break;
-        case _FC_WRITE_AND_READ_REGISTERS:
-        case _FC_READ_HOLDING_REGISTERS:
-        case _FC_READ_INPUT_REGISTERS:
-            /* Read functions 1 value = 2 bytes */
-            req_nb_value = (req[offset + 3] << 8) + req[offset + 4];
-            rsp_nb_value = (rsp[offset + 1] / 2);
-            break;
-        case _FC_WRITE_MULTIPLE_COILS:
-        case _FC_WRITE_MULTIPLE_REGISTERS:
-            /* N Write functions */
-            req_nb_value = (req[offset + 3] << 8) + req[offset + 4];
-            rsp_nb_value = (rsp[offset + 3] << 8) | rsp[offset + 4];
-            break;
-        case _FC_REPORT_SLAVE_ID:
-            /* Report slave ID (bytes received) */
-            req_nb_value = rsp_nb_value = rsp[offset + 1];
-            break;
-        default:
-            /* 1 Write functions & others */
-            req_nb_value = rsp_nb_value = 1;
-        }
+        ctx->backend->compute_numbers_of_values(function, req, rsp, offset,
+                                                &req_nb_value, &rsp_nb_value);
 
         if (req_nb_value == rsp_nb_value) {
             rc = rsp_nb_value;
@@ -645,7 +673,8 @@ int modbus_reply(modbus_t *ctx, const uint8_t *req,
     int slave = req[offset - 1];
     int function = req[offset];
     uint16_t address = (req[offset + 1] << 8) + req[offset + 2];
-    uint8_t rsp[MAX_MESSAGE_LENGTH];
+    /* uint8_t rsp[MAX_MESSAGE_LENGTH]; */
+    uint8_t *rsp = ctx->rsp_buffer;
     int rsp_length = 0;
     sft_t sft;
 
@@ -918,7 +947,8 @@ int modbus_reply_exception(modbus_t *ctx, const uint8_t *req,
     int offset = ctx->backend->header_length;
     int slave = req[offset - 1];
     int function = req[offset];
-    uint8_t rsp[MAX_MESSAGE_LENGTH];
+    /* uint8_t rsp[MAX_MESSAGE_LENGTH]; */
+    uint8_t *rsp = ctx->rsp_buffer;
     int rsp_length;
     int dummy_length = 99;
     sft_t sft;
@@ -943,6 +973,17 @@ int modbus_reply_exception(modbus_t *ctx, const uint8_t *req,
     }
 }
 
+int modbus_send_message(modbus_t *ctx, uint8_t *msg, int msg_length)
+{
+    return send_msg(ctx, msg, msg_length);
+}
+
+int modbus_check_confirmation(modbus_t *ctx, uint8_t *req, uint8_t *rsp, int rsp_length)
+{
+    return check_confirmation(ctx, req, rsp, rsp_length);
+}
+
+
 /* Reads IO status */
 static int read_io_status(modbus_t *ctx, int function,
                           int addr, int nb, uint8_t *dest)
@@ -951,7 +992,8 @@ static int read_io_status(modbus_t *ctx, int function,
     int req_length;
 
     uint8_t req[_MIN_REQ_LENGTH];
-    uint8_t rsp[MAX_MESSAGE_LENGTH];
+    /* uint8_t rsp[MAX_MESSAGE_LENGTH]; */
+    uint8_t *rsp = ctx->rsp_buffer;
 
     req_length = ctx->backend->build_request_basis(ctx, function, addr, nb, req);
 
@@ -1035,14 +1077,15 @@ int modbus_read_input_bits(modbus_t *ctx, int addr, int nb, uint8_t *dest)
         return nb;
 }
 
-/* Reads the data from a remove device and put that data into an array */
+/* Reads the data from a remote device and put that data into an array */
 static int read_registers(modbus_t *ctx, int function, int addr, int nb,
                           uint16_t *dest)
 {
     int rc;
     int req_length;
     uint8_t req[_MIN_REQ_LENGTH];
-    uint8_t rsp[MAX_MESSAGE_LENGTH];
+    /* uint8_t rsp[MAX_MESSAGE_LENGTH]; */
+    uint8_t *rsp = ctx->rsp_buffer;
 
     if (nb > MODBUS_MAX_READ_REGISTERS) {
         if (ctx->debug) {
@@ -1170,7 +1213,8 @@ int modbus_write_bits(modbus_t *ctx, int addr, int nb, const uint8_t *src)
     int bit_check = 0;
     int pos = 0;
 
-    uint8_t req[MAX_MESSAGE_LENGTH];
+    /* uint8_t req[MAX_MESSAGE_LENGTH]; */
+    uint8_t *req = ctx->req_buffer;
 
     if (nb > MODBUS_MAX_WRITE_BITS) {
         if (ctx->debug) {
@@ -1206,7 +1250,8 @@ int modbus_write_bits(modbus_t *ctx, int addr, int nb, const uint8_t *src)
 
     rc = send_msg(ctx, req, req_length);
     if (rc > 0) {
-        uint8_t rsp[MAX_MESSAGE_LENGTH];
+        /* uint8_t rsp[MAX_MESSAGE_LENGTH]; */
+        uint8_t *rsp = ctx->rsp_buffer;
 
         rc = receive_msg(ctx, rsp, MSG_CONFIRMATION);
         if (rc == -1)
@@ -1227,7 +1272,8 @@ int modbus_write_registers(modbus_t *ctx, int addr, int nb, const uint16_t *src)
     int req_length;
     int byte_count;
 
-    uint8_t req[MAX_MESSAGE_LENGTH];
+    /* uint8_t req[MAX_MESSAGE_LENGTH]; */
+    uint8_t *req = ctx->req_buffer;
 
     if (nb > MODBUS_MAX_WRITE_REGISTERS) {
         if (ctx->debug) {
@@ -1252,7 +1298,8 @@ int modbus_write_registers(modbus_t *ctx, int addr, int nb, const uint16_t *src)
 
     rc = send_msg(ctx, req, req_length);
     if (rc > 0) {
-        uint8_t rsp[MAX_MESSAGE_LENGTH];
+        /* uint8_t rsp[MAX_MESSAGE_LENGTH]; */
+        uint8_t *rsp = ctx->rsp_buffer;
 
         rc = receive_msg(ctx, rsp, MSG_CONFIRMATION);
         if (rc == -1)
@@ -1275,8 +1322,10 @@ int modbus_write_and_read_registers(modbus_t *ctx,
     int req_length;
     int i;
     int byte_count;
-    uint8_t req[MAX_MESSAGE_LENGTH];
-    uint8_t rsp[MAX_MESSAGE_LENGTH];
+    /* uint8_t req[MAX_MESSAGE_LENGTH]; */
+    /* uint8_t rsp[MAX_MESSAGE_LENGTH]; */
+    uint8_t *req = ctx->req_buffer;
+    uint8_t *rsp = ctx->rsp_buffer;
 
     if (write_nb > MODBUS_MAX_RW_WRITE_REGISTERS) {
         if (ctx->debug) {
@@ -1356,7 +1405,8 @@ int modbus_report_slave_id(modbus_t *ctx, uint8_t *dest)
     if (rc > 0) {
         int i;
         int offset;
-        uint8_t rsp[MAX_MESSAGE_LENGTH];
+        /* uint8_t rsp[MAX_MESSAGE_LENGTH]; */
+        uint8_t *rsp = ctx->rsp_buffer;
 
         rc = receive_msg(ctx, rsp, MSG_CONFIRMATION);
         if (rc == -1)
@@ -1400,8 +1450,7 @@ int modbus_set_slave(modbus_t *ctx, int slave)
     return ctx->backend->set_slave(ctx, slave);
 }
 
-int modbus_set_error_recovery(modbus_t *ctx,
-                              modbus_error_recovery_mode error_recovery)
+int modbus_set_error_recovery(modbus_t *ctx, int error_recovery)
 {
     if (error_recovery >= 0) {
         ctx->error_recovery = (uint8_t) error_recovery;
@@ -1450,6 +1499,16 @@ int modbus_get_header_length(modbus_t *ctx)
     return ctx->backend->header_length;
 }
 
+uint8_t *modbus_get_request_buffer(modbus_t *ctx)
+{
+    return ctx->req_buffer;
+}
+
+uint8_t *modbus_get_response_buffer(modbus_t *ctx)
+{
+    return ctx->rsp_buffer;
+}
+
 int modbus_connect(modbus_t *ctx)
 {
     return ctx->backend->connect(ctx);
@@ -1468,6 +1527,9 @@ void modbus_free(modbus_t *ctx)
     if (ctx == NULL)
         return;
 
+    if (ctx->req_buffer != NULL) free(ctx->req_buffer);
+    if (ctx->rsp_buffer != NULL) free(ctx->rsp_buffer);
+
     free(ctx->backend_data);
     free(ctx);
 }
@@ -1475,6 +1537,11 @@ void modbus_free(modbus_t *ctx)
 void modbus_set_debug(modbus_t *ctx, int boolean)
 {
     ctx->debug = boolean;
+}
+
+int modbus_get_debug(modbus_t* ctx)
+{
+    return ctx->debug;
 }
 
 /* Allocates 4 arrays to store bits, input bits, registers and inputs

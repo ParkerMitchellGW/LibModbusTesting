@@ -1,5 +1,5 @@
 /*
- * Copyright © 2001-2011 Stéphane Raimbault <stephane.raimbault@gmail.com>
+ * (c) 2011 Guided Wave Inc.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -16,21 +16,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  */
 
-#ifndef _MODBUS_RTU_H_
-#define _MODBUS_RTU_H_
+#ifndef _MODBUS_CRC_H_
+#define _MODBUS_CRC_H_
 
-/* Modbus_Application_Protocol_V1_1b.pdf Chapter 4 Section 1 Page 5
- * RS232 / RS485 ADU = 253 bytes + slave (1 byte) + CRC (2 bytes) = 256 bytes
- */
-#define MODBUS_RTU_MAX_ADU_LENGTH  256
+uint16_t modbus_crc16(uint8_t* buffer, uint32_t buffer_length);
 
-modbus_t* modbus_new_rtu(const char *device, int baud, char parity,
-                         int data_bit, int stop_bit);
-
-#define MODBUS_RTU_RS232 0
-#define MODBUS_RTU_RS485 1
-
-int modbus_rtu_set_serial_mode(modbus_t *ctx, int mode);
-int modbus_rtu_get_serial_mode(modbus_t *ctx);
-
-#endif /* _MODBUS_RTU_H_ */
+#endif  /* _MODBUS_CRC_H_ */

@@ -1,0 +1,606 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ACLOCAL	Makefile	/^ACLOCAL = ${SHELL} \/s\/dev\/libmodbus-3.0.1\/missing --run aclocal-1.11$/;"	m
+ACLOCAL_M4	Makefile	/^ACLOCAL_M4 = $(top_srcdir)\/aclocal.m4$/;"	m
+AMTAR	Makefile	/^AMTAR = $${TAR-tar}$/;"	m
+AM_DEFAULT_VERBOSITY	Makefile	/^AM_DEFAULT_VERBOSITY = 0$/;"	m
+AM_V_CC	Makefile	/^AM_V_CC = $(am__v_CC_$(V))$/;"	m
+AM_V_CCLD	Makefile	/^AM_V_CCLD = $(am__v_CCLD_$(V))$/;"	m
+AM_V_GEN	Makefile	/^AM_V_GEN = $(am__v_GEN_$(V))$/;"	m
+AM_V_at	Makefile	/^AM_V_at = $(am__v_at_$(V))$/;"	m
+AM_V_lt	Makefile	/^AM_V_lt = $(am__v_lt_$(V))$/;"	m
+AR	Makefile	/^AR = ar$/;"	m
+AS	Makefile	/^AS = as$/;"	m
+AUTOCONF	Makefile	/^AUTOCONF = ${SHELL} \/s\/dev\/libmodbus-3.0.1\/missing --run autoconf$/;"	m
+AUTOHEADER	Makefile	/^AUTOHEADER = ${SHELL} \/s\/dev\/libmodbus-3.0.1\/missing --run autoheader$/;"	m
+AUTOMAKE	Makefile	/^AUTOMAKE = ${SHELL} \/s\/dev\/libmodbus-3.0.1\/missing --run automake-1.11$/;"	m
+AWK	Makefile	/^AWK = gawk$/;"	m
+CC	Makefile	/^CC = gcc$/;"	m
+CCDEPMODE	Makefile	/^CCDEPMODE = depmode=gcc3$/;"	m
+CCLD	Makefile	/^CCLD = $(CC)$/;"	m
+CFLAGS	Makefile	/^CFLAGS = -g -O2 -Wall -Werror$/;"	m
+CLEANFILES	Makefile	/^CLEANFILES = *~$/;"	m
+COMPILE	Makefile	/^COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \\$/;"	m
+CONFIG_CLEAN_FILES	Makefile	/^CONFIG_CLEAN_FILES = modbus-version.h$/;"	m
+CONFIG_CLEAN_VPATH_FILES	Makefile	/^CONFIG_CLEAN_VPATH_FILES =$/;"	m
+CONFIG_HEADER	Makefile	/^CONFIG_HEADER = $(top_builddir)\/config.h$/;"	m
+CPP	Makefile	/^CPP = gcc -E$/;"	m
+CPPFLAGS	Makefile	/^CPPFLAGS = $/;"	m
+CTAGS	Makefile	/^CTAGS = ctags$/;"	m
+CXX	Makefile	/^CXX = g++$/;"	m
+CXXCPP	Makefile	/^CXXCPP = g++ -E$/;"	m
+CXXDEPMODE	Makefile	/^CXXDEPMODE = depmode=gcc3$/;"	m
+CXXFLAGS	Makefile	/^CXXFLAGS = -g -O2$/;"	m
+CYGPATH_W	Makefile	/^CYGPATH_W = cygpath -w$/;"	m
+D2X_CHUNK_SIZE	modbus-d2x.h	28;"	d
+DEFAULT_INCLUDES	Makefile	/^DEFAULT_INCLUDES = -I. -I$(top_builddir)$/;"	m
+DEFS	Makefile	/^DEFS = -DHAVE_CONFIG_H$/;"	m
+DEPDIR	Makefile	/^DEPDIR = .deps$/;"	m
+DISTCLEANFILES	Makefile	/^DISTCLEANFILES = modbus-version.h$/;"	m
+DISTFILES	Makefile	/^DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)$/;"	m
+DIST_COMMON	Makefile	/^DIST_COMMON = $(libmodbusinclude_HEADERS) $(srcdir)\/Makefile.am \\$/;"	m
+DIST_SOURCES	Makefile	/^DIST_SOURCES = $(libmodbus_la_SOURCES)$/;"	m
+DLLTOOL	Makefile	/^DLLTOOL = dlltool$/;"	m
+DSYMUTIL	Makefile	/^DSYMUTIL = $/;"	m
+DUMPBIN	Makefile	/^DUMPBIN = $/;"	m
+ECHO_C	Makefile	/^ECHO_C = $/;"	m
+ECHO_N	Makefile	/^ECHO_N = -n$/;"	m
+ECHO_T	Makefile	/^ECHO_T = $/;"	m
+ECONNREFUSED	modbus-tcp.h	26;"	d
+ECONNRESET	modbus-tcp.h	25;"	d
+EGREP	Makefile	/^EGREP = \/usr\/bin\/grep -E$/;"	m
+EMBBADCRC	modbus.h	119;"	d
+EMBBADDATA	modbus.h	120;"	d
+EMBBADEXC	modbus.h	121;"	d
+EMBMDATA	modbus.h	123;"	d
+EMBUNKEXC	modbus.h	122;"	d
+EMBXACK	modbus.h	108;"	d
+EMBXGPATH	modbus.h	112;"	d
+EMBXGTAR	modbus.h	113;"	d
+EMBXILADD	modbus.h	105;"	d
+EMBXILFUN	modbus.h	104;"	d
+EMBXILVAL	modbus.h	106;"	d
+EMBXMAX	modbus.h	115;"	d
+EMBXMEMPAR	modbus.h	111;"	d
+EMBXNACK	modbus.h	110;"	d
+EMBXSBUSY	modbus.h	109;"	d
+EMBXSFAIL	modbus.h	107;"	d
+EMBXTIMEOUT	modbus.h	114;"	d
+ENOPROTOOPT	modbus-tcp.h	28;"	d
+ENOTSUP	modbus-rtu-private.h	41;"	d
+ETAGS	Makefile	/^ETAGS = etags$/;"	m
+ETIMEDOUT	modbus-tcp.h	27;"	d
+EXEEXT	Makefile	/^EXEEXT = .exe$/;"	m
+EXTRA_DIST	Makefile	/^EXTRA_DIST = modbus-version.h.in$/;"	m
+FALSE	modbus.h	48;"	d
+FGREP	Makefile	/^FGREP = \/usr\/bin\/grep -F$/;"	m
+GREP	Makefile	/^GREP = \/usr\/bin\/grep$/;"	m
+GWIX412	fprintf.h	4;"	d
+HEADERS	Makefile	/^HEADERS = $(libmodbusinclude_HEADERS)$/;"	m
+INSTALL	Makefile	/^INSTALL = \/usr\/bin\/install -c$/;"	m
+INSTALL_DATA	Makefile	/^INSTALL_DATA = ${INSTALL} -m 644$/;"	m
+INSTALL_HEADER	Makefile	/^INSTALL_HEADER = $(INSTALL_DATA)$/;"	m
+INSTALL_PROGRAM	Makefile	/^INSTALL_PROGRAM = ${INSTALL}$/;"	m
+INSTALL_SCRIPT	Makefile	/^INSTALL_SCRIPT = ${INSTALL}$/;"	m
+INSTALL_STRIP_PROGRAM	Makefile	/^INSTALL_STRIP_PROGRAM = $(install_sh) -c -s$/;"	m
+LD	Makefile	/^LD = \/usr\/i686-pc-cygwin\/bin\/ld.exe$/;"	m
+LDFLAGS	Makefile	/^LDFLAGS = $/;"	m
+LIBMODBUS_LT_VERSION_INFO	Makefile	/^LIBMODBUS_LT_VERSION_INFO = 5:0:0$/;"	m
+LIBMODBUS_VERSION	Makefile	/^LIBMODBUS_VERSION = 3.0.1$/;"	m
+LIBMODBUS_VERSION	modbus-version.h	31;"	d
+LIBMODBUS_VERSION_CHECK	modbus-version.h	44;"	d
+LIBMODBUS_VERSION_HEX	modbus-version.h	38;"	d
+LIBMODBUS_VERSION_MAJOR	Makefile	/^LIBMODBUS_VERSION_MAJOR = 3$/;"	m
+LIBMODBUS_VERSION_MAJOR	modbus-version.h	22;"	d
+LIBMODBUS_VERSION_MICRO	Makefile	/^LIBMODBUS_VERSION_MICRO = 1$/;"	m
+LIBMODBUS_VERSION_MICRO	modbus-version.h	28;"	d
+LIBMODBUS_VERSION_MINOR	Makefile	/^LIBMODBUS_VERSION_MINOR = 0$/;"	m
+LIBMODBUS_VERSION_MINOR	modbus-version.h	25;"	d
+LIBMODBUS_VERSION_STRING	modbus-version.h	35;"	d
+LIBOBJS	Makefile	/^LIBOBJS = $/;"	m
+LIBS	Makefile	/^LIBS = $/;"	m
+LIBTOOL	Makefile	/^LIBTOOL = $(SHELL) $(top_builddir)\/libtool$/;"	m
+LINK	Makefile	/^LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
+LIPO	Makefile	/^LIPO = $/;"	m
+LN_S	Makefile	/^LN_S = ln -s$/;"	m
+LTCOMPILE	Makefile	/^LTCOMPILE = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
+LTLIBOBJS	Makefile	/^LTLIBOBJS = $/;"	m
+LTLIBRARIES	Makefile	/^LTLIBRARIES = $(lib_LTLIBRARIES)$/;"	m
+LT_SYS_LIBRARY_PATH	Makefile	/^LT_SYS_LIBRARY_PATH = $/;"	m
+MAKEINFO	Makefile	/^MAKEINFO = ${SHELL} \/s\/dev\/libmodbus-3.0.1\/missing --run makeinfo$/;"	m
+MANIFEST_TOOL	Makefile	/^MANIFEST_TOOL = :$/;"	m
+MAXDWORD	modbus-d2x.c	31;"	d	file:
+MKDIR_P	Makefile	/^MKDIR_P = \/usr\/bin\/mkdir -p$/;"	m
+MODBUS_BEGIN_DECLS	modbus.h	38;"	d
+MODBUS_BEGIN_DECLS	modbus.h	41;"	d
+MODBUS_BROADCAST_ADDRESS	modbus.h	63;"	d
+MODBUS_D2X_DEFAULT_ADU_LENGTH	modbus-d2x.h	29;"	d
+MODBUS_END_DECLS	modbus.h	39;"	d
+MODBUS_END_DECLS	modbus.h	42;"	d
+MODBUS_ENOBASE	modbus.h	85;"	d
+MODBUS_ERROR_RECOVERY_LINK	modbus.h	/^    MODBUS_ERROR_RECOVERY_LINK          = (1<<1),$/;"	e	enum:__anon5
+MODBUS_ERROR_RECOVERY_NONE	modbus.h	/^    MODBUS_ERROR_RECOVERY_NONE          = 0,$/;"	e	enum:__anon5
+MODBUS_ERROR_RECOVERY_PROTOCOL	modbus.h	/^    MODBUS_ERROR_RECOVERY_PROTOCOL      = (1<<2),$/;"	e	enum:__anon5
+MODBUS_EXCEPTION_ACKNOWLEDGE	modbus.h	/^    MODBUS_EXCEPTION_ACKNOWLEDGE,$/;"	e	enum:__anon3
+MODBUS_EXCEPTION_GATEWAY_PATH	modbus.h	/^    MODBUS_EXCEPTION_GATEWAY_PATH,$/;"	e	enum:__anon3
+MODBUS_EXCEPTION_GATEWAY_TARGET	modbus.h	/^    MODBUS_EXCEPTION_GATEWAY_TARGET,$/;"	e	enum:__anon3
+MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS	modbus.h	/^    MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS,$/;"	e	enum:__anon3
+MODBUS_EXCEPTION_ILLEGAL_DATA_VALUE	modbus.h	/^    MODBUS_EXCEPTION_ILLEGAL_DATA_VALUE,$/;"	e	enum:__anon3
+MODBUS_EXCEPTION_ILLEGAL_FUNCTION	modbus.h	/^    MODBUS_EXCEPTION_ILLEGAL_FUNCTION = 0x01,$/;"	e	enum:__anon3
+MODBUS_EXCEPTION_MAX	modbus.h	/^    MODBUS_EXCEPTION_MAX$/;"	e	enum:__anon3
+MODBUS_EXCEPTION_MEMORY_PARITY	modbus.h	/^    MODBUS_EXCEPTION_MEMORY_PARITY,$/;"	e	enum:__anon3
+MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE	modbus.h	/^    MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE,$/;"	e	enum:__anon3
+MODBUS_EXCEPTION_NOT_DEFINED	modbus.h	/^    MODBUS_EXCEPTION_NOT_DEFINED,$/;"	e	enum:__anon3
+MODBUS_EXCEPTION_SLAVE_OR_SERVER_BUSY	modbus.h	/^    MODBUS_EXCEPTION_SLAVE_OR_SERVER_BUSY,$/;"	e	enum:__anon3
+MODBUS_EXCEPTION_SLAVE_OR_SERVER_FAILURE	modbus.h	/^    MODBUS_EXCEPTION_SLAVE_OR_SERVER_FAILURE,$/;"	e	enum:__anon3
+MODBUS_EXCEPTION_TIMEOUT	modbus.h	/^    MODBUS_EXCEPTION_TIMEOUT,$/;"	e	enum:__anon3
+MODBUS_GET_FLOAT_FROM_INT16	modbus.h	236;"	d
+MODBUS_GET_FLOAT_FROM_INT16_SWAPPED	modbus.h	237;"	d
+MODBUS_GET_HIGH_BYTE	modbus.h	232;"	d
+MODBUS_GET_INT16_FROM_INT8	modbus.h	238;"	d
+MODBUS_GET_INT32_FROM_INT16	modbus.h	234;"	d
+MODBUS_GET_INT32_FROM_INT16_SWAPPED	modbus.h	235;"	d
+MODBUS_GET_INT32_FROM_INT8	modbus.h	245;"	d
+MODBUS_GET_INT32_FROM_INT8_SWAPPED	modbus.h	253;"	d
+MODBUS_GET_LOW_BYTE	modbus.h	233;"	d
+MODBUS_MAX_READ_BITS	modbus.h	70;"	d
+MODBUS_MAX_READ_REGISTERS	modbus.h	80;"	d
+MODBUS_MAX_RW_WRITE_REGISTERS	modbus.h	82;"	d
+MODBUS_MAX_WRITE_BITS	modbus.h	71;"	d
+MODBUS_MAX_WRITE_REGISTERS	modbus.h	81;"	d
+MODBUS_RTU_MAX_ADU_LENGTH	modbus-rtu.h	25;"	d
+MODBUS_RTU_RS232	modbus-rtu.h	30;"	d
+MODBUS_RTU_RS485	modbus-rtu.h	31;"	d
+MODBUS_SET_INT16_TO_INT8	modbus.h	239;"	d
+MODBUS_SET_INT32_TO_INT8	modbus.h	261;"	d
+MODBUS_SET_INT32_TO_INT8_SWAPPED	modbus.h	269;"	d
+MODBUS_TCP_DEFAULT_PORT	modbus-tcp.h	31;"	d
+MODBUS_TCP_MAX_ADU_LENGTH	modbus-tcp.h	37;"	d
+MODBUS_TCP_SLAVE	modbus-tcp.h	32;"	d
+MSG_CONFIRMATION	modbus.h	/^    MSG_CONFIRMATION$/;"	e	enum:__anon6
+MSG_INDICATION	modbus.h	/^    MSG_INDICATION,$/;"	e	enum:__anon6
+MSG_LENGTH_UNDEFINED	modbus.c	37;"	d	file:
+MSG_NOSIGNAL	modbus-tcp.c	57;"	d	file:
+NM	Makefile	/^NM = \/usr\/bin\/nm -B$/;"	m
+NMEDIT	Makefile	/^NMEDIT = $/;"	m
+NORMAL_INSTALL	Makefile	/^NORMAL_INSTALL = :$/;"	m
+NORMAL_UNINSTALL	Makefile	/^NORMAL_UNINSTALL = :$/;"	m
+OBJDUMP	Makefile	/^OBJDUMP = objdump$/;"	m
+OBJEXT	Makefile	/^OBJEXT = o$/;"	m
+OFF	modbus.h	56;"	d
+ON	modbus.h	60;"	d
+OS_BSD	modbus-tcp.c	44;"	d	file:
+OS_WIN32	modbus-tcp.c	30;"	d	file:
+OTOOL	Makefile	/^OTOOL = $/;"	m
+OTOOL64	Makefile	/^OTOOL64 = $/;"	m
+PACKAGE	Makefile	/^PACKAGE = libmodbus$/;"	m
+PACKAGE_BUGREPORT	Makefile	/^PACKAGE_BUGREPORT = https:\/\/github.com\/stephane\/libmodbus\/issues$/;"	m
+PACKAGE_NAME	Makefile	/^PACKAGE_NAME = libmodbus$/;"	m
+PACKAGE_STRING	Makefile	/^PACKAGE_STRING = libmodbus 3.0.1$/;"	m
+PACKAGE_TARNAME	Makefile	/^PACKAGE_TARNAME = libmodbus$/;"	m
+PACKAGE_URL	Makefile	/^PACKAGE_URL = $/;"	m
+PACKAGE_VERSION	Makefile	/^PACKAGE_VERSION = 3.0.1$/;"	m
+PATH_SEPARATOR	Makefile	/^PATH_SEPARATOR = :$/;"	m
+POST_INSTALL	Makefile	/^POST_INSTALL = :$/;"	m
+POST_UNINSTALL	Makefile	/^POST_UNINSTALL = :$/;"	m
+PRE_INSTALL	Makefile	/^PRE_INSTALL = :$/;"	m
+PRE_UNINSTALL	Makefile	/^PRE_UNINSTALL = :$/;"	m
+PY_BUF_SIZE	modbus-rtu-private.h	44;"	d
+RANLIB	Makefile	/^RANLIB = ranlib$/;"	m
+SED	Makefile	/^SED = \/usr\/bin\/sed$/;"	m
+SET_MAKE	Makefile	/^SET_MAKE = $/;"	m
+SHELL	Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHUT_RDWR	modbus-tcp.c	37;"	d	file:
+SOURCES	Makefile	/^SOURCES = $(libmodbus_la_SOURCES)$/;"	m
+STRIP	Makefile	/^STRIP = strip$/;"	m
+TRUE	modbus.h	52;"	d
+VERSION	Makefile	/^VERSION = 3.0.1$/;"	m
+WINVER	modbus-tcp.c	34;"	d	file:
+_BYTE_TIMEOUT	modbus-private.h	52;"	d
+_D2X_BUF_SIZE	modbus-d2x-private.h	37;"	d
+_FC_D2X_READ_SCAN	modbus-d2x.h	32;"	d
+_FC_READ_COILS	modbus-private.h	55;"	d
+_FC_READ_DISCRETE_INPUTS	modbus-private.h	56;"	d
+_FC_READ_EXCEPTION_STATUS	modbus-private.h	61;"	d
+_FC_READ_HOLDING_REGISTERS	modbus-private.h	57;"	d
+_FC_READ_INPUT_REGISTERS	modbus-private.h	58;"	d
+_FC_REPORT_SLAVE_ID	modbus-private.h	64;"	d
+_FC_WRITE_AND_READ_REGISTERS	modbus-private.h	65;"	d
+_FC_WRITE_MULTIPLE_COILS	modbus-private.h	62;"	d
+_FC_WRITE_MULTIPLE_REGISTERS	modbus-private.h	63;"	d
+_FC_WRITE_SINGLE_COIL	modbus-private.h	59;"	d
+_FC_WRITE_SINGLE_REGISTER	modbus-private.h	60;"	d
+_FPRINTF_H_	fprintf.h	2;"	d
+_MIN_REQ_LENGTH	modbus-private.h	44;"	d
+_MODBUS_BACKEND_TYPE_D2X	modbus-private.h	/^    _MODBUS_BACKEND_TYPE_D2X$/;"	e	enum:__anon1
+_MODBUS_BACKEND_TYPE_RTU	modbus-private.h	/^    _MODBUS_BACKEND_TYPE_RTU=0,$/;"	e	enum:__anon1
+_MODBUS_BACKEND_TYPE_TCP	modbus-private.h	/^    _MODBUS_BACKEND_TYPE_TCP,$/;"	e	enum:__anon1
+_MODBUS_CRC_H_	modbus-crc.h	20;"	d
+_MODBUS_D2X_CHECKSUM_LENGTH	modbus-d2x-private.h	26;"	d
+_MODBUS_D2X_HEADER_LENGTH	modbus-d2x-private.h	22;"	d
+_MODBUS_D2X_H_	modbus-d2x.h	20;"	d
+_MODBUS_D2X_PRESET_REQ_LENGTH	modbus-d2x-private.h	23;"	d
+_MODBUS_D2X_PRESET_RSP_LENGTH	modbus-d2x-private.h	24;"	d
+_MODBUS_D2X_PRIVATE_H_	modbus-d2x-private.h	20;"	d
+_MODBUS_EXCEPTION_RSP_LENGTH	modbus-private.h	48;"	d
+_MODBUS_H_	modbus.h	20;"	d
+_MODBUS_PRIVATE_H_	modbus-private.h	20;"	d
+_MODBUS_RTU_CHECKSUM_LENGTH	modbus-rtu-private.h	38;"	d
+_MODBUS_RTU_HEADER_LENGTH	modbus-rtu-private.h	34;"	d
+_MODBUS_RTU_H_	modbus-rtu.h	20;"	d
+_MODBUS_RTU_PRESET_REQ_LENGTH	modbus-rtu-private.h	35;"	d
+_MODBUS_RTU_PRESET_RSP_LENGTH	modbus-rtu-private.h	36;"	d
+_MODBUS_RTU_PRIVATE_H_	modbus-rtu-private.h	20;"	d
+_MODBUS_TCP_CHECKSUM_LENGTH	modbus-tcp-private.h	26;"	d
+_MODBUS_TCP_HEADER_LENGTH	modbus-tcp-private.h	22;"	d
+_MODBUS_TCP_H_	modbus-tcp.h	20;"	d
+_MODBUS_TCP_PI_NODE_LENGTH	modbus-tcp-private.h	35;"	d
+_MODBUS_TCP_PI_SERVICE_LENGTH	modbus-tcp-private.h	36;"	d
+_MODBUS_TCP_PRESET_REQ_LENGTH	modbus-tcp-private.h	23;"	d
+_MODBUS_TCP_PRESET_RSP_LENGTH	modbus-tcp-private.h	24;"	d
+_MODBUS_TCP_PRIVATE_H_	modbus-tcp-private.h	20;"	d
+_MODBUS_VERSION_H_	modbus-version.h	19;"	d
+_REPORT_SLAVE_ID	modbus-private.h	46;"	d
+_RESPONSE_TIMEOUT	modbus-private.h	51;"	d
+_STEP_DATA	modbus.c	/^    _STEP_DATA$/;"	e	enum:__anon2	file:
+_STEP_FUNCTION	modbus.c	/^    _STEP_FUNCTION,$/;"	e	enum:__anon2	file:
+_STEP_META	modbus.c	/^    _STEP_META,$/;"	e	enum:__anon2	file:
+_WIN32	modbus-d2x.h	24;"	d
+_d2x_open_method	modbus-d2x-private.h	/^typedef enum _d2x_open_method$/;"	g
+_error_print	modbus.c	/^void _error_print(modbus_t *ctx, const char *context)$/;"	f
+_modbus	modbus-private.h	/^struct _modbus {$/;"	s
+_modbus_backend	modbus-private.h	/^typedef struct _modbus_backend {$/;"	s
+_modbus_compute_additional_data_length	modbus.c	/^int _modbus_compute_additional_data_length($/;"	f
+_modbus_compute_data_length_after_meta	modbus.c	/^int _modbus_compute_data_length_after_meta($/;"	f
+_modbus_compute_meta_length_after_function	modbus.c	/^uint8_t _modbus_compute_meta_length_after_function($/;"	f
+_modbus_compute_numbers_of_values	modbus.c	/^void _modbus_compute_numbers_of_values($/;"	f
+_modbus_compute_response_length_from_request	modbus.c	/^unsigned int _modbus_compute_response_length_from_request(modbus_t *ctx, uint8_t *req)$/;"	f
+_modbus_d2x	modbus-d2x-private.h	/^typedef struct _modbus_d2x$/;"	s
+_modbus_d2x_backend	modbus-d2x.c	/^\/*const*\/ modbus_backend_t _modbus_d2x_backend =$/;"	v
+_modbus_d2x_build_request_basis	modbus-d2x.c	/^static int _modbus_d2x_build_request_basis($/;"	f	file:
+_modbus_d2x_build_response_basis	modbus-d2x.c	/^static int _modbus_d2x_build_response_basis($/;"	f	file:
+_modbus_d2x_check_integrity	modbus-d2x.c	/^static int _modbus_d2x_check_integrity($/;"	f	file:
+_modbus_d2x_close	modbus-d2x.c	/^static void _modbus_d2x_close($/;"	f	file:
+_modbus_d2x_compute_additional_data_length	modbus-d2x.c	/^static int _modbus_d2x_compute_additional_data_length($/;"	f	file:
+_modbus_d2x_compute_data_length_after_meta	modbus-d2x.c	/^static int _modbus_d2x_compute_data_length_after_meta($/;"	f	file:
+_modbus_d2x_compute_meta_length_after_function	modbus-d2x.c	/^static uint8_t _modbus_d2x_compute_meta_length_after_function($/;"	f	file:
+_modbus_d2x_connect	modbus-d2x.c	/^static int _modbus_d2x_connect($/;"	f	file:
+_modbus_d2x_filter_request	modbus-d2x.c	/^static int _modbus_d2x_filter_request($/;"	f	file:
+_modbus_d2x_flush	modbus-d2x.c	/^static int _modbus_d2x_flush($/;"	f	file:
+_modbus_d2x_prepare_response_tid	modbus-d2x.c	/^static int _modbus_d2x_prepare_response_tid($/;"	f	file:
+_modbus_d2x_recv	modbus-d2x.c	/^static ssize_t _modbus_d2x_recv($/;"	f	file:
+_modbus_d2x_select	modbus-d2x.c	/^static int _modbus_d2x_select($/;"	f	file:
+_modbus_d2x_send	modbus-d2x.c	/^static ssize_t _modbus_d2x_send($/;"	f	file:
+_modbus_d2x_send_msg_pre	modbus-d2x.c	/^static int _modbus_d2x_send_msg_pre($/;"	f	file:
+_modbus_init_common	modbus.c	/^void _modbus_init_common(modbus_t *ctx)$/;"	f
+_modbus_new_d2x	modbus-d2x.c	/^static modbus_t* _modbus_new_d2x($/;"	f	file:
+_modbus_rtu	modbus-rtu-private.h	/^typedef struct _modbus_rtu {$/;"	s
+_modbus_rtu_backend	modbus-rtu.c	/^\/*const*\/ modbus_backend_t _modbus_rtu_backend = {$/;"	v
+_modbus_rtu_build_request_basis	modbus-rtu.c	/^static int _modbus_rtu_build_request_basis(modbus_t *ctx, int function,$/;"	f	file:
+_modbus_rtu_build_response_basis	modbus-rtu.c	/^static int _modbus_rtu_build_response_basis(sft_t *sft, uint8_t *rsp)$/;"	f	file:
+_modbus_rtu_check_integrity	modbus-rtu.c	/^int _modbus_rtu_check_integrity(modbus_t *ctx, uint8_t *msg,$/;"	f
+_modbus_rtu_close	modbus-rtu.c	/^void _modbus_rtu_close(modbus_t *ctx)$/;"	f
+_modbus_rtu_connect	modbus-rtu.c	/^static int _modbus_rtu_connect(modbus_t *ctx)$/;"	f	file:
+_modbus_rtu_filter_request	modbus-rtu.c	/^int _modbus_rtu_filter_request(modbus_t *ctx, int slave)$/;"	f
+_modbus_rtu_flush	modbus-rtu.c	/^int _modbus_rtu_flush(modbus_t *ctx)$/;"	f
+_modbus_rtu_prepare_response_tid	modbus-rtu.c	/^int _modbus_rtu_prepare_response_tid(const uint8_t *req, int *req_length)$/;"	f
+_modbus_rtu_recv	modbus-rtu.c	/^ssize_t _modbus_rtu_recv(modbus_t *ctx, uint8_t *rsp, int rsp_length)$/;"	f
+_modbus_rtu_select	modbus-rtu.c	/^int _modbus_rtu_select(modbus_t *ctx, fd_set *rfds,$/;"	f
+_modbus_rtu_send	modbus-rtu.c	/^ssize_t _modbus_rtu_send(modbus_t *ctx, const uint8_t *req, int req_length)$/;"	f
+_modbus_rtu_send_msg_pre	modbus-rtu.c	/^int _modbus_rtu_send_msg_pre(uint8_t *req, int req_length)$/;"	f
+_modbus_set_slave	modbus-d2x.c	/^static int _modbus_set_slave($/;"	f	file:
+_modbus_set_slave	modbus-rtu.c	/^static int _modbus_set_slave(modbus_t *ctx, int slave)$/;"	f	file:
+_modbus_set_slave	modbus-tcp.c	/^static int _modbus_set_slave(modbus_t *ctx, int slave)$/;"	f	file:
+_modbus_tcp	modbus-tcp-private.h	/^typedef struct _modbus_tcp {$/;"	s
+_modbus_tcp_backend	modbus-tcp.c	/^\/*const*\/ modbus_backend_t _modbus_tcp_backend = {$/;"	v
+_modbus_tcp_build_request_basis	modbus-tcp.c	/^int _modbus_tcp_build_request_basis(modbus_t *ctx, int function,$/;"	f
+_modbus_tcp_build_response_basis	modbus-tcp.c	/^int _modbus_tcp_build_response_basis(sft_t *sft, uint8_t *rsp)$/;"	f
+_modbus_tcp_check_integrity	modbus-tcp.c	/^int _modbus_tcp_check_integrity(modbus_t *ctx, uint8_t *msg, const int msg_length)$/;"	f
+_modbus_tcp_close	modbus-tcp.c	/^void _modbus_tcp_close(modbus_t *ctx)$/;"	f
+_modbus_tcp_connect	modbus-tcp.c	/^static int _modbus_tcp_connect(modbus_t *ctx)$/;"	f	file:
+_modbus_tcp_filter_request	modbus-tcp.c	/^int _modbus_tcp_filter_request(modbus_t *ctx, int slave)$/;"	f
+_modbus_tcp_flush	modbus-tcp.c	/^int _modbus_tcp_flush(modbus_t *ctx)$/;"	f
+_modbus_tcp_init_win32	modbus-tcp.c	/^static int _modbus_tcp_init_win32(void)$/;"	f	file:
+_modbus_tcp_pi	modbus-tcp-private.h	/^typedef struct _modbus_tcp_pi {$/;"	s
+_modbus_tcp_pi_backend	modbus-tcp.c	/^\/*const*\/ modbus_backend_t _modbus_tcp_pi_backend = {$/;"	v
+_modbus_tcp_pi_connect	modbus-tcp.c	/^static int _modbus_tcp_pi_connect(modbus_t *ctx)$/;"	f	file:
+_modbus_tcp_pre_check_confirmation	modbus-tcp.c	/^int _modbus_tcp_pre_check_confirmation(modbus_t *ctx, const uint8_t *req,$/;"	f
+_modbus_tcp_prepare_response_tid	modbus-tcp.c	/^int _modbus_tcp_prepare_response_tid(const uint8_t *req, int *req_length)$/;"	f
+_modbus_tcp_recv	modbus-tcp.c	/^ssize_t _modbus_tcp_recv(modbus_t *ctx, uint8_t *rsp, int rsp_length) {$/;"	f
+_modbus_tcp_select	modbus-tcp.c	/^int _modbus_tcp_select(modbus_t *ctx, fd_set *rfds, struct timeval *tv, int length_to_read)$/;"	f
+_modbus_tcp_send	modbus-tcp.c	/^ssize_t _modbus_tcp_send(modbus_t *ctx, const uint8_t *req, int req_length)$/;"	f
+_modbus_tcp_send_msg_pre	modbus-tcp.c	/^int _modbus_tcp_send_msg_pre(uint8_t *req, int req_length)$/;"	f
+_modbus_tcp_set_ipv4_options	modbus-tcp.c	/^static int _modbus_tcp_set_ipv4_options(int s)$/;"	f	file:
+_sft	modbus-private.h	/^typedef struct _sft {$/;"	s
+_sleep_and_flush	modbus.c	/^int _sleep_and_flush(modbus_t *ctx)$/;"	f
+_step_t	modbus.c	/^} _step_t;$/;"	t	typeref:enum:__anon2	file:
+abs_builddir	Makefile	/^abs_builddir = \/s\/dev\/libmodbus-3.0.1\/src$/;"	m
+abs_srcdir	Makefile	/^abs_srcdir = \/s\/dev\/libmodbus-3.0.1\/src$/;"	m
+abs_top_builddir	Makefile	/^abs_top_builddir = \/s\/dev\/libmodbus-3.0.1$/;"	m
+abs_top_srcdir	Makefile	/^abs_top_srcdir = \/s\/dev\/libmodbus-3.0.1$/;"	m
+ac_ct_AR	Makefile	/^ac_ct_AR = ar$/;"	m
+ac_ct_CC	Makefile	/^ac_ct_CC = gcc$/;"	m
+ac_ct_CXX	Makefile	/^ac_ct_CXX = g++$/;"	m
+ac_ct_DUMPBIN	Makefile	/^ac_ct_DUMPBIN = $/;"	m
+ac_libmodbus_have_asciidoc	Makefile	/^ac_libmodbus_have_asciidoc = no$/;"	m
+ac_libmodbus_have_xmlto	Makefile	/^ac_libmodbus_have_xmlto = no$/;"	m
+am__aclocal_m4_deps	Makefile	/^am__aclocal_m4_deps = $(top_srcdir)\/acinclude.m4 \\$/;"	m
+am__base_list	Makefile	/^am__base_list = \\$/;"	m
+am__can_run_installinfo	Makefile	/^am__can_run_installinfo = \\$/;"	m
+am__cd	Makefile	/^am__cd = CDPATH="$${ZSH_VERSION+.}$(PATH_SEPARATOR)" && cd$/;"	m
+am__configure_deps	Makefile	/^am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \\$/;"	m
+am__depfiles_maybe	Makefile	/^am__depfiles_maybe = depfiles$/;"	m
+am__include	Makefile	/^am__include = include$/;"	m
+am__install_max	Makefile	/^am__install_max = 40$/;"	m
+am__installdirs	Makefile	/^am__installdirs = "$(DESTDIR)$(libdir)" \\$/;"	m
+am__leading_dot	Makefile	/^am__leading_dot = .$/;"	m
+am__make_dryrun	Makefile	/^am__make_dryrun = \\$/;"	m
+am__mv	Makefile	/^am__mv = mv -f$/;"	m
+am__nobase_list	Makefile	/^am__nobase_list = $(am__nobase_strip_setup); \\$/;"	m
+am__nobase_strip	Makefile	/^am__nobase_strip = \\$/;"	m
+am__nobase_strip_setup	Makefile	/^am__nobase_strip_setup = \\$/;"	m
+am__quote	Makefile	/^am__quote = $/;"	m
+am__strip_dir	Makefile	/^am__strip_dir = f=`echo $$p | sed -e 's|^.*\/||'`;$/;"	m
+am__tar	Makefile	/^am__tar = $${TAR-tar} chof - "$$tardir"$/;"	m
+am__uninstall_files_from_dir	Makefile	/^am__uninstall_files_from_dir = { \\$/;"	m
+am__untar	Makefile	/^am__untar = $${TAR-tar} xf -$/;"	m
+am__v_CCLD_	Makefile	/^am__v_CCLD_ = $(am__v_CCLD_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_CCLD_0	Makefile	/^am__v_CCLD_0 = @echo "  CCLD  " $@;$/;"	m
+am__v_CC_	Makefile	/^am__v_CC_ = $(am__v_CC_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_CC_0	Makefile	/^am__v_CC_0 = @echo "  CC    " $@;$/;"	m
+am__v_GEN_	Makefile	/^am__v_GEN_ = $(am__v_GEN_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_GEN_0	Makefile	/^am__v_GEN_0 = @echo "  GEN   " $@;$/;"	m
+am__v_at_	Makefile	/^am__v_at_ = $(am__v_at_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_at_0	Makefile	/^am__v_at_0 = @$/;"	m
+am__v_lt_	Makefile	/^am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))$/;"	m
+am__v_lt_0	Makefile	/^am__v_lt_0 = --silent$/;"	m
+am__vpath_adj	Makefile	/^am__vpath_adj = case $$p in \\$/;"	m
+am__vpath_adj_setup	Makefile	/^am__vpath_adj_setup = srcdirstrip=`echo "$(srcdir)" | sed 's|.|.|g'`;$/;"	m
+am_libmodbus_la_OBJECTS	Makefile	/^am_libmodbus_la_OBJECTS = modbus.lo modbus-data.lo modbus-rtu.lo \\$/;"	m
+backend	modbus-private.h	/^    \/*const*\/ modbus_backend_t *backend;$/;"	m	struct:_modbus
+backend_data	modbus-private.h	/^    void *backend_data;$/;"	m	struct:_modbus
+backend_type	modbus-private.h	/^    unsigned int backend_type;$/;"	m	struct:_modbus_backend
+baud	modbus-d2x-private.h	/^    int               baud;$/;"	m	struct:_modbus_d2x
+baud	modbus-rtu-private.h	/^    int baud;$/;"	m	struct:_modbus_rtu
+bindir	Makefile	/^bindir = ${exec_prefix}\/bin$/;"	m
+buf	modbus-rtu-private.h	/^	uint8_t buf[PY_BUF_SIZE];$/;"	m	struct:win32_ser
+buffer	modbus-d2x-private.h	/^	uint8_t           buffer[_D2X_BUF_SIZE];$/;"	m	struct:_modbus_d2x
+build	Makefile	/^build = i686-pc-cygwin$/;"	m
+build_alias	Makefile	/^build_alias = $/;"	m
+build_cpu	Makefile	/^build_cpu = i686$/;"	m
+build_os	Makefile	/^build_os = cygwin$/;"	m
+build_request_basis	modbus-private.h	/^    int (*build_request_basis) (modbus_t *ctx, int function, int addr,$/;"	m	struct:_modbus_backend
+build_response_basis	modbus-private.h	/^    int (*build_response_basis) (sft_t *sft, uint8_t *rsp);$/;"	m	struct:_modbus_backend
+build_triplet	Makefile	/^build_triplet = i686-pc-cygwin$/;"	m
+build_vendor	Makefile	/^build_vendor = pc$/;"	m
+builddir	Makefile	/^builddir = .$/;"	m
+byte_timeout	modbus-private.h	/^    struct timeval byte_timeout;$/;"	m	struct:_modbus	typeref:struct:_modbus::timeval
+check_confirmation	modbus.c	/^static int check_confirmation(modbus_t *ctx, uint8_t *req,$/;"	f	file:
+check_integrity	modbus-private.h	/^    int (*check_integrity) (modbus_t *ctx, uint8_t *msg,$/;"	m	struct:_modbus_backend
+checksum_length	modbus-private.h	/^    unsigned int checksum_length;$/;"	m	struct:_modbus_backend
+close	modbus-private.h	/^    void (*close) (modbus_t *ctx);$/;"	m	struct:_modbus_backend
+close	modbus-tcp.c	38;"	d	file:
+compute_additional_data_length	modbus-private.h	/^    int (*compute_additional_data_length) (modbus_t *ctx, uint8_t *msg, msg_type_t msg_type, int timedOut);$/;"	m	struct:_modbus_backend
+compute_data_length_after_meta	modbus-private.h	/^    int (*compute_data_length_after_meta) (modbus_t *ctx, uint8_t *msg, msg_type_t msg_type);$/;"	m	struct:_modbus_backend
+compute_meta_length_after_function	modbus-private.h	/^    uint8_t (*compute_meta_length_after_function) (int function, msg_type_t msg_type);$/;"	m	struct:_modbus_backend
+compute_numbers_of_values	modbus-private.h	/^    void (*compute_numbers_of_values) (const int function, uint8_t *req, uint8_t *rsp, int offset,$/;"	m	struct:_modbus_backend
+compute_response_length_from_request	modbus-private.h	/^    unsigned int (*compute_response_length_from_request) (modbus_t *ctx, uint8_t *req);$/;"	m	struct:_modbus_backend
+connect	modbus-private.h	/^    int (*connect) (modbus_t *ctx);$/;"	m	struct:_modbus_backend
+d2xClose	modbus-d2x.c	/^static FT_STATUS d2xClose($/;"	f	file:
+d2xCreateDeviceInfoList	modbus-d2x.c	/^static FT_STATUS d2xCreateDeviceInfoList(LPDWORD pNumDevices)$/;"	f	file:
+d2xGetDeviceInfoList	modbus-d2x.c	/^static FT_STATUS d2xGetDeviceInfoList($/;"	f	file:
+d2xOpenByDescription	modbus-d2x-private.h	/^    d2xOpenByDescription = FT_OPEN_BY_DESCRIPTION$/;"	e	enum:_d2x_open_method
+d2xOpenBySerialNum	modbus-d2x-private.h	/^    d2xOpenBySerialNum   = FT_OPEN_BY_SERIAL_NUMBER,$/;"	e	enum:_d2x_open_method
+d2xOpenEx	modbus-d2x.c	/^static FT_STATUS d2xOpenEx($/;"	f	file:
+d2xPurge	modbus-d2x.c	/^static FT_STATUS d2xPurge($/;"	f	file:
+d2xRead	modbus-d2x.c	/^static FT_STATUS d2xRead($/;"	f	file:
+d2xSetCommParams	modbus-d2x.c	/^static void d2xSetCommParams($/;"	f	file:
+d2xSetTimeouts	modbus-d2x.c	/^static FT_STATUS d2xSetTimeouts($/;"	f	file:
+d2xStatusStrings	modbus-d2x.c	/^static const char* d2xStatusStrings[] =$/;"	v	file:
+d2xWrite	modbus-d2x.c	/^static FT_STATUS d2xWrite($/;"	f	file:
+d2x_device_info_t	modbus-d2x.h	/^typedef FT_DEVICE_LIST_INFO_NODE d2x_device_info_t;$/;"	t
+d2x_handle_t	modbus-d2x-private.h	/^typedef FT_HANDLE d2x_handle_t;$/;"	t
+d2x_open_method_t	modbus-d2x-private.h	/^} d2x_open_method_t;$/;"	t	typeref:enum:_d2x_open_method
+d2x_read	modbus-d2x.c	/^static ssize_t d2x_read($/;"	f	file:
+d2x_select	modbus-d2x.c	/^static int d2x_select($/;"	f	file:
+data_bit	modbus-rtu-private.h	/^    uint8_t data_bit;$/;"	m	struct:_modbus_rtu
+datadir	Makefile	/^datadir = ${datarootdir}$/;"	m
+datarootdir	Makefile	/^datarootdir = ${prefix}\/share$/;"	m
+debug	modbus-private.h	/^    int debug;$/;"	m	struct:_modbus
+depcomp	Makefile	/^depcomp = $(SHELL) $(top_srcdir)\/depcomp$/;"	m
+device	modbus-d2x-private.h	/^    char              device[64];$/;"	m	struct:_modbus_d2x
+device	modbus-rtu-private.h	/^    char device[64];$/;"	m	struct:_modbus_rtu
+docdir	Makefile	/^docdir = ${datarootdir}\/doc\/${PACKAGE_TARNAME}$/;"	m
+dvidir	Makefile	/^dvidir = ${docdir}$/;"	m
+error_recovery	modbus-private.h	/^    int error_recovery;$/;"	m	struct:_modbus
+exec_prefix	Makefile	/^exec_prefix = ${prefix}$/;"	m
+fd	modbus-rtu-private.h	/^	HANDLE fd;$/;"	m	struct:win32_ser
+filter_request	modbus-private.h	/^    int (*filter_request) (modbus_t *ctx, int slave);$/;"	m	struct:_modbus_backend
+flush	modbus-private.h	/^    int (*flush) (modbus_t *ctx);$/;"	m	struct:_modbus_backend
+fprintf	fprintf.h	11;"	d
+function	modbus-private.h	/^    int function;$/;"	m	struct:_sft
+handle	modbus-d2x-private.h	/^    d2x_handle_t      handle;$/;"	m	struct:_modbus_d2x
+header_length	modbus-private.h	/^    unsigned int header_length;$/;"	m	struct:_modbus_backend
+host	Makefile	/^host = i686-pc-cygwin$/;"	m
+host_alias	Makefile	/^host_alias = $/;"	m
+host_cpu	Makefile	/^host_cpu = i686$/;"	m
+host_os	Makefile	/^host_os = cygwin$/;"	m
+host_triplet	Makefile	/^host_triplet = i686-pc-cygwin$/;"	m
+host_vendor	Makefile	/^host_vendor = pc$/;"	m
+htmldir	Makefile	/^htmldir = ${docdir}$/;"	m
+includedir	Makefile	/^includedir = ${prefix}\/include$/;"	m
+infodir	Makefile	/^infodir = ${datarootdir}\/info$/;"	m
+install_sh	Makefile	/^install_sh = ${SHELL} \/s\/dev\/libmodbus-3.0.1\/install-sh$/;"	m
+install_sh_DATA	Makefile	/^install_sh_DATA = $(install_sh) -c -m 644$/;"	m
+install_sh_PROGRAM	Makefile	/^install_sh_PROGRAM = $(install_sh) -c$/;"	m
+install_sh_SCRIPT	Makefile	/^install_sh_SCRIPT = $(install_sh) -c$/;"	m
+ip	modbus-tcp-private.h	/^    char ip[16];$/;"	m	struct:_modbus_tcp
+lib_LTLIBRARIES	Makefile	/^lib_LTLIBRARIES = libmodbus.la$/;"	m
+libdir	Makefile	/^libdir = ${exec_prefix}\/lib$/;"	m
+libexecdir	Makefile	/^libexecdir = ${exec_prefix}\/libexec$/;"	m
+libmodbus_la_DEPENDENCIES	Makefile	/^libmodbus_la_DEPENDENCIES =$/;"	m
+libmodbus_la_LDFLAGS	Makefile	/^libmodbus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined -version-info $(LIBMODBUS_LT_VERSION_INFO)$/;"	m
+libmodbus_la_LIBADD	Makefile	/^libmodbus_la_LIBADD = -L\/usr\/local\/lib -lftd2xx$/;"	m
+libmodbus_la_LINK	Makefile	/^libmodbus_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \\$/;"	m
+libmodbus_la_OBJECTS	Makefile	/^libmodbus_la_OBJECTS = $(am_libmodbus_la_OBJECTS)$/;"	m
+libmodbus_la_SOURCES	Makefile	/^libmodbus_la_SOURCES = \\$/;"	m
+libmodbus_version_major	modbus.c	/^const unsigned int libmodbus_version_major = LIBMODBUS_VERSION_MAJOR;$/;"	v
+libmodbus_version_micro	modbus.c	/^const unsigned int libmodbus_version_micro = LIBMODBUS_VERSION_MICRO;$/;"	v
+libmodbus_version_minor	modbus.c	/^const unsigned int libmodbus_version_minor = LIBMODBUS_VERSION_MINOR;$/;"	v
+libmodbusinclude_HEADERS	Makefile	/^libmodbusinclude_HEADERS = modbus.h modbus-version.h modbus-rtu.h modbus-tcp.h modbus-d2x.h$/;"	m
+libmodbusincludedir	Makefile	/^libmodbusincludedir = $(includedir)\/modbus$/;"	m
+localedir	Makefile	/^localedir = ${datarootdir}\/locale$/;"	m
+localstatedir	Makefile	/^localstatedir = ${prefix}\/var$/;"	m
+mandir	Makefile	/^mandir = ${datarootdir}\/man$/;"	m
+max_adu_length	modbus-d2x-private.h	/^    unsigned int      max_adu_length;$/;"	m	struct:_modbus_d2x
+max_adu_length	modbus-private.h	/^    unsigned int max_adu_length;$/;"	m	struct:_modbus_backend
+method	modbus-d2x-private.h	/^    d2x_open_method_t method;$/;"	m	struct:_modbus_d2x
+mkdir_p	Makefile	/^mkdir_p = \/usr\/bin\/mkdir -p$/;"	m
+mkinstalldirs	Makefile	/^mkinstalldirs = $(install_sh) -d$/;"	m
+modbus_backend_t	modbus-private.h	/^} modbus_backend_t;$/;"	t	typeref:struct:_modbus_backend
+modbus_bakend_type_t	modbus-private.h	/^} modbus_bakend_type_t;$/;"	t	typeref:enum:__anon1
+modbus_check_confirmation	modbus.c	/^int modbus_check_confirmation(modbus_t *ctx, uint8_t *req, uint8_t *rsp, int rsp_length)$/;"	f
+modbus_close	modbus.c	/^void modbus_close(modbus_t *ctx)$/;"	f
+modbus_connect	modbus.c	/^int modbus_connect(modbus_t *ctx)$/;"	f
+modbus_crc16	modbus-crc.c	/^uint16_t modbus_crc16(uint8_t* buffer, uint32_t buffer_length)$/;"	f
+modbus_d2x_get_buffer_length	modbus-d2x.c	/^int modbus_d2x_get_buffer_length(const modbus_t* ctx)$/;"	f
+modbus_d2x_get_handle	modbus-d2x.c	/^FT_HANDLE modbus_d2x_get_handle(modbus_t* ctx)$/;"	f
+modbus_d2x_read_scan	modbus-d2x.c	/^int modbus_d2x_read_scan($/;"	f
+modbus_d2x_t	modbus-d2x-private.h	/^} modbus_d2x_t;$/;"	t	typeref:struct:_modbus_d2x
+modbus_error_recovery_mode	modbus.h	/^} modbus_error_recovery_mode;$/;"	t	typeref:enum:__anon5
+modbus_flush	modbus.c	/^int modbus_flush(modbus_t *ctx)$/;"	f
+modbus_free	modbus.c	/^void modbus_free(modbus_t *ctx)$/;"	f
+modbus_get_byte_from_bits	modbus-data.c	/^uint8_t modbus_get_byte_from_bits(const uint8_t *src, int index,$/;"	f
+modbus_get_byte_timeout	modbus.c	/^void modbus_get_byte_timeout(modbus_t *ctx, struct timeval *timeout)$/;"	f
+modbus_get_d2x_device_info	modbus-d2x.c	/^int modbus_get_d2x_device_info($/;"	f
+modbus_get_d2x_device_info_list	modbus-d2x.c	/^d2x_device_info_t* modbus_get_d2x_device_info_list($/;"	f
+modbus_get_debug	modbus.c	/^int modbus_get_debug(modbus_t* ctx)$/;"	f
+modbus_get_float	modbus-data.c	/^float modbus_get_float(const uint16_t *src)$/;"	f
+modbus_get_float_swapped	modbus-data.c	/^float modbus_get_float_swapped(const uint16_t *src)$/;"	f
+modbus_get_header_length	modbus.c	/^int modbus_get_header_length(modbus_t *ctx)$/;"	f
+modbus_get_request_buffer	modbus.c	/^uint8_t *modbus_get_request_buffer(modbus_t *ctx)$/;"	f
+modbus_get_response_buffer	modbus.c	/^uint8_t *modbus_get_response_buffer(modbus_t *ctx)$/;"	f
+modbus_get_response_timeout	modbus.c	/^void modbus_get_response_timeout(modbus_t *ctx, struct timeval *timeout)$/;"	f
+modbus_get_socket	modbus.c	/^int modbus_get_socket(modbus_t *ctx)$/;"	f
+modbus_mapping_free	modbus.c	/^void modbus_mapping_free(modbus_mapping_t *mb_mapping)$/;"	f
+modbus_mapping_new	modbus.c	/^modbus_mapping_t* modbus_mapping_new(int nb_bits, int nb_input_bits,$/;"	f
+modbus_mapping_t	modbus.h	/^} modbus_mapping_t;$/;"	t	typeref:struct:__anon4
+modbus_new_d2x_by_description	modbus-d2x.c	/^modbus_t* modbus_new_d2x_by_description($/;"	f
+modbus_new_d2x_by_description_sized	modbus-d2x.c	/^modbus_t* modbus_new_d2x_by_description_sized($/;"	f
+modbus_new_d2x_by_serial_number	modbus-d2x.c	/^modbus_t* modbus_new_d2x_by_serial_number($/;"	f
+modbus_new_d2x_by_serial_number_sized	modbus-d2x.c	/^modbus_t* modbus_new_d2x_by_serial_number_sized($/;"	f
+modbus_new_rtu	modbus-rtu.c	/^modbus_t* modbus_new_rtu(const char *device,$/;"	f
+modbus_new_tcp	modbus-tcp.c	/^modbus_t* modbus_new_tcp(const char *ip, int port)$/;"	f
+modbus_new_tcp_pi	modbus-tcp.c	/^modbus_t* modbus_new_tcp_pi(const char *node, const char *service)$/;"	f
+modbus_read_bits	modbus.c	/^int modbus_read_bits(modbus_t *ctx, int addr, int nb, uint8_t *dest)$/;"	f
+modbus_read_input_bits	modbus.c	/^int modbus_read_input_bits(modbus_t *ctx, int addr, int nb, uint8_t *dest)$/;"	f
+modbus_read_input_registers	modbus.c	/^int modbus_read_input_registers(modbus_t *ctx, int addr, int nb,$/;"	f
+modbus_read_registers	modbus.c	/^int modbus_read_registers(modbus_t *ctx, int addr, int nb, uint16_t *dest)$/;"	f
+modbus_receive	modbus.c	/^int modbus_receive(modbus_t *ctx, uint8_t *req)$/;"	f
+modbus_receive_confirmation	modbus.c	/^int modbus_receive_confirmation(modbus_t *ctx, uint8_t *rsp)$/;"	f
+modbus_reply	modbus.c	/^int modbus_reply(modbus_t *ctx, const uint8_t *req,$/;"	f
+modbus_reply_exception	modbus.c	/^int modbus_reply_exception(modbus_t *ctx, const uint8_t *req,$/;"	f
+modbus_report_slave_id	modbus.c	/^int modbus_report_slave_id(modbus_t *ctx, uint8_t *dest)$/;"	f
+modbus_rtu_get_serial_mode	modbus-rtu.c	/^int modbus_rtu_get_serial_mode(modbus_t *ctx) {$/;"	f
+modbus_rtu_set_serial_mode	modbus-rtu.c	/^int modbus_rtu_set_serial_mode(modbus_t *ctx, int mode)$/;"	f
+modbus_rtu_t	modbus-rtu-private.h	/^} modbus_rtu_t;$/;"	t	typeref:struct:_modbus_rtu
+modbus_send_message	modbus.c	/^int modbus_send_message(modbus_t *ctx, uint8_t *msg, int msg_length)$/;"	f
+modbus_send_raw_request	modbus.c	/^int modbus_send_raw_request(modbus_t *ctx, uint8_t *raw_req, int raw_req_length)$/;"	f
+modbus_set_bits_from_byte	modbus-data.c	/^void modbus_set_bits_from_byte(uint8_t *dest, int index, const uint8_t value)$/;"	f
+modbus_set_bits_from_bytes	modbus-data.c	/^void modbus_set_bits_from_bytes(uint8_t *dest, int index, unsigned int nb_bits,$/;"	f
+modbus_set_byte_timeout	modbus.c	/^void modbus_set_byte_timeout(modbus_t *ctx, const struct timeval *timeout)$/;"	f
+modbus_set_debug	modbus.c	/^void modbus_set_debug(modbus_t *ctx, int boolean)$/;"	f
+modbus_set_error_recovery	modbus.c	/^int modbus_set_error_recovery(modbus_t *ctx, int error_recovery)$/;"	f
+modbus_set_float	modbus-data.c	/^void modbus_set_float(float f, uint16_t *dest)$/;"	f
+modbus_set_response_timeout	modbus.c	/^void modbus_set_response_timeout(modbus_t *ctx, const struct timeval *timeout)$/;"	f
+modbus_set_slave	modbus.c	/^int modbus_set_slave(modbus_t *ctx, int slave)$/;"	f
+modbus_set_socket	modbus.c	/^void modbus_set_socket(modbus_t *ctx, int socket)$/;"	f
+modbus_strerror	modbus.c	/^const char *modbus_strerror(int errnum) {$/;"	f
+modbus_t	modbus.h	/^typedef struct _modbus modbus_t;$/;"	t	typeref:struct:_modbus
+modbus_tcp_accept	modbus-tcp.c	/^int modbus_tcp_accept(modbus_t *ctx, int *socket)$/;"	f
+modbus_tcp_listen	modbus-tcp.c	/^int modbus_tcp_listen(modbus_t *ctx, int nb_connection)$/;"	f
+modbus_tcp_pi_accept	modbus-tcp.c	/^int modbus_tcp_pi_accept(modbus_t *ctx, int *socket)$/;"	f
+modbus_tcp_pi_listen	modbus-tcp.c	/^int modbus_tcp_pi_listen(modbus_t *ctx, int nb_connection)$/;"	f
+modbus_tcp_pi_t	modbus-tcp-private.h	/^} modbus_tcp_pi_t;$/;"	t	typeref:struct:_modbus_tcp_pi
+modbus_tcp_t	modbus-tcp-private.h	/^} modbus_tcp_t;$/;"	t	typeref:struct:_modbus_tcp
+modbus_write_and_read_registers	modbus.c	/^int modbus_write_and_read_registers(modbus_t *ctx,$/;"	f
+modbus_write_bit	modbus.c	/^int modbus_write_bit(modbus_t *ctx, int addr, int status)$/;"	f
+modbus_write_bits	modbus.c	/^int modbus_write_bits(modbus_t *ctx, int addr, int nb, const uint8_t *src)$/;"	f
+modbus_write_register	modbus.c	/^int modbus_write_register(modbus_t *ctx, int addr, int value)$/;"	f
+modbus_write_registers	modbus.c	/^int modbus_write_registers(modbus_t *ctx, int addr, int nb, const uint16_t *src)$/;"	f
+msg_type_t	modbus.h	/^} msg_type_t;$/;"	t	typeref:enum:__anon6
+nAvailable	modbus-d2x-private.h	/^    DWORD             nAvailable;$/;"	m	struct:_modbus_d2x
+nUsed	modbus-d2x-private.h	/^    DWORD             nUsed;$/;"	m	struct:_modbus_d2x
+n_bytes	modbus-rtu-private.h	/^	DWORD n_bytes;$/;"	m	struct:win32_ser
+nb_bits	modbus.h	/^    int nb_bits;$/;"	m	struct:__anon4
+nb_input_bits	modbus.h	/^    int nb_input_bits;$/;"	m	struct:__anon4
+nb_input_registers	modbus.h	/^    int nb_input_registers;$/;"	m	struct:__anon4
+nb_registers	modbus.h	/^    int nb_registers;$/;"	m	struct:__anon4
+node	modbus-tcp-private.h	/^    char node[_MODBUS_TCP_PI_NODE_LENGTH];$/;"	m	struct:_modbus_tcp_pi
+old_dcb	modbus-rtu-private.h	/^    DCB old_dcb;$/;"	m	struct:_modbus_rtu
+old_tios	modbus-rtu-private.h	/^    struct termios old_tios;$/;"	m	struct:_modbus_rtu	typeref:struct:_modbus_rtu::termios
+oldincludedir	Makefile	/^oldincludedir = \/usr\/include$/;"	m
+parity	modbus-rtu-private.h	/^    char parity;$/;"	m	struct:_modbus_rtu
+pdfdir	Makefile	/^pdfdir = ${docdir}$/;"	m
+pkgdatadir	Makefile	/^pkgdatadir = $(datadir)\/libmodbus$/;"	m
+pkgincludedir	Makefile	/^pkgincludedir = $(includedir)\/libmodbus$/;"	m
+pkglibdir	Makefile	/^pkglibdir = $(libdir)\/libmodbus$/;"	m
+pkglibexecdir	Makefile	/^pkglibexecdir = $(libexecdir)\/libmodbus$/;"	m
+port	modbus-tcp-private.h	/^    int port;$/;"	m	struct:_modbus_tcp
+port	modbus-tcp-private.h	/^    int port;$/;"	m	struct:_modbus_tcp_pi
+pre_check_confirmation	modbus-private.h	/^    int (*pre_check_confirmation) (modbus_t *ctx, const uint8_t *req,$/;"	m	struct:_modbus_backend
+prefix	Makefile	/^prefix = \/usr\/local$/;"	m
+prepare_response_tid	modbus-private.h	/^    int (*prepare_response_tid) (const uint8_t *req, int *req_length);$/;"	m	struct:_modbus_backend
+printf	fprintf.h	12;"	d
+program_transform_name	Makefile	/^program_transform_name = s,x,x,$/;"	m
+psdir	Makefile	/^psdir = ${docdir}$/;"	m
+read_io_status	modbus.c	/^static int read_io_status(modbus_t *ctx, int function,$/;"	f	file:
+read_registers	modbus.c	/^static int read_registers(modbus_t *ctx, int function, int addr, int nb,$/;"	f	file:
+receive_msg	modbus.c	/^static int receive_msg(modbus_t *ctx, uint8_t *msg, msg_type_t msg_type)$/;"	f	file:
+recv	modbus-private.h	/^    ssize_t (*recv) (modbus_t *ctx, uint8_t *rsp, int rsp_length);$/;"	m	struct:_modbus_backend
+req_buffer	modbus-private.h	/^    uint8_t *req_buffer;$/;"	m	struct:_modbus
+response_exception	modbus.c	/^static int response_exception(modbus_t *ctx, sft_t *sft,$/;"	f	file:
+response_io_status	modbus.c	/^static int response_io_status(int address, int nb,$/;"	f	file:
+response_timeout	modbus-private.h	/^    struct timeval response_timeout;$/;"	m	struct:_modbus	typeref:struct:_modbus::timeval
+rsp_buffer	modbus-private.h	/^    uint8_t *rsp_buffer;$/;"	m	struct:_modbus
+s	modbus-private.h	/^    int s;$/;"	m	struct:_modbus
+sbindir	Makefile	/^sbindir = ${exec_prefix}\/sbin$/;"	m
+select	modbus-private.h	/^    int (*select) (modbus_t *ctx, fd_set *rfds, struct timeval *tv, int msg_length);$/;"	m	struct:_modbus_backend
+send	modbus-private.h	/^    ssize_t (*send) (modbus_t *ctx, const uint8_t *req, int req_length);$/;"	m	struct:_modbus_backend
+send_msg	modbus.c	/^static int send_msg(modbus_t *ctx, uint8_t *msg, int msg_length)$/;"	f	file:
+send_msg_pre	modbus-private.h	/^    int (*send_msg_pre) (uint8_t *req, int req_length);$/;"	m	struct:_modbus_backend
+serial_mode	modbus-rtu-private.h	/^    int serial_mode;$/;"	m	struct:_modbus_rtu
+service	modbus-tcp-private.h	/^    char service[_MODBUS_TCP_PI_SERVICE_LENGTH];$/;"	m	struct:_modbus_tcp_pi
+set_slave	modbus-private.h	/^    int (*set_slave) (modbus_t *ctx, int slave);$/;"	m	struct:_modbus_backend
+sft_t	modbus-private.h	/^} sft_t;$/;"	t	typeref:struct:_sft
+sharedstatedir	Makefile	/^sharedstatedir = ${prefix}\/com$/;"	m
+slave	modbus-private.h	/^    int slave;$/;"	m	struct:_modbus
+slave	modbus-private.h	/^    int slave;$/;"	m	struct:_sft
+srcdir	Makefile	/^srcdir = .$/;"	m
+stop_bit	modbus-rtu-private.h	/^    uint8_t stop_bit;$/;"	m	struct:_modbus_rtu
+strerror_d2x	modbus-d2x.c	/^static const char* strerror_d2x($/;"	f	file:
+strlcpy	modbus.c	/^size_t strlcpy(char *dest, const char *src, size_t dest_size)$/;"	f
+subdir	Makefile	/^subdir = src$/;"	m
+sysconfdir	Makefile	/^sysconfdir = ${prefix}\/etc$/;"	m
+t_id	modbus-private.h	/^    int t_id;$/;"	m	struct:_sft
+tab_bits	modbus.h	/^    uint8_t *tab_bits;$/;"	m	struct:__anon4
+tab_input_bits	modbus.h	/^    uint8_t *tab_input_bits;$/;"	m	struct:__anon4
+tab_input_registers	modbus.h	/^    uint16_t *tab_input_registers;$/;"	m	struct:__anon4
+tab_registers	modbus.h	/^    uint16_t *tab_registers;$/;"	m	struct:__anon4
+table_crc_hi	modbus-crc.c	/^static const uint8_t table_crc_hi[] =$/;"	v	file:
+table_crc_lo	modbus-crc.c	/^static const uint8_t table_crc_lo[] =$/;"	v	file:
+target_alias	Makefile	/^target_alias = $/;"	m
+top_build_prefix	Makefile	/^top_build_prefix = ..\/$/;"	m
+top_builddir	Makefile	/^top_builddir = ..$/;"	m
+top_srcdir	Makefile	/^top_srcdir = ..$/;"	m
+transform	Makefile	/^transform = $(program_transform_name)$/;"	m
+w_ser	modbus-rtu-private.h	/^    struct win32_ser w_ser;$/;"	m	struct:_modbus_rtu	typeref:struct:_modbus_rtu::win32_ser
+win32_ser	modbus-rtu-private.h	/^struct win32_ser {$/;"	s
+win32_ser_init	modbus-rtu.c	/^static void win32_ser_init(struct win32_ser *ws) {$/;"	f	file:
+win32_ser_read	modbus-rtu.c	/^static int win32_ser_read(struct win32_ser *ws, uint8_t *p_msg,$/;"	f	file:
+win32_ser_select	modbus-rtu.c	/^static int win32_ser_select(struct win32_ser *ws, int max_len,$/;"	f	file:
+write_single	modbus.c	/^static int write_single(modbus_t *ctx, int function, int addr, int value)$/;"	f	file:
