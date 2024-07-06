@@ -7,20 +7,27 @@ libmodbus_la_SOURCES = \
         modbus-rtu.c \
         modbus-rtu.h \
         modbus-rtu-private.h \
+        modbus-d2x.c \
+        modbus-d2x.h \
+        modbus-d2x-private.h \
         modbus-tcp.c \
         modbus-tcp.h \
         modbus-tcp-private.h \
+        modbus-crc.c \
+        modbus-crc.h \
         modbus-version.h
 
 if OS_WIN32
-libmodbus_la_LIBADD = -lwsock32
+libmodbus_la_LIBADD = -lwsock32 -L/usr/local/lib -lftd2xx
+else
+libmodbus_la_LIBADD = -L/usr/local/lib -lftd2xx
 endif
 
 libmodbus_la_LDFLAGS = $(AM_LDFLAGS) -no-undefined -version-info $(LIBMODBUS_LT_VERSION_INFO)
 
 # Header files to install
 libmodbusincludedir = $(includedir)/modbus
-libmodbusinclude_HEADERS = modbus.h modbus-version.h modbus-rtu.h modbus-tcp.h
+libmodbusinclude_HEADERS = modbus.h modbus-version.h modbus-rtu.h modbus-tcp.h modbus-d2x.h
 
 DISTCLEANFILES = modbus-version.h
 EXTRA_DIST = modbus-version.h.in

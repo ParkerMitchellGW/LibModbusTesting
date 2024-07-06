@@ -61,6 +61,7 @@
 
 #include "modbus-tcp.h"
 #include "modbus-tcp-private.h"
+#include "fprintf.h"
 
 #ifdef OS_WIN32
 static int _modbus_tcp_init_win32(void)
@@ -584,7 +585,7 @@ int _modbus_tcp_filter_request(modbus_t *ctx, int slave)
     return 0;
 }
 
-const modbus_backend_t _modbus_tcp_backend = {
+/*const*/ modbus_backend_t _modbus_tcp_backend = {
     _MODBUS_BACKEND_TYPE_TCP,
     _MODBUS_TCP_HEADER_LENGTH,
     _MODBUS_TCP_CHECKSUM_LENGTH,
@@ -602,11 +603,16 @@ const modbus_backend_t _modbus_tcp_backend = {
     _modbus_tcp_close,
     _modbus_tcp_flush,
     _modbus_tcp_select,
-    _modbus_tcp_filter_request
+    _modbus_tcp_filter_request,
+    _modbus_compute_response_length_from_request,
+    _modbus_compute_meta_length_after_function,
+    _modbus_compute_data_length_after_meta,
+    _modbus_compute_additional_data_length,
+    _modbus_compute_numbers_of_values
 };
 
 
-const modbus_backend_t _modbus_tcp_pi_backend = {
+/*const*/ modbus_backend_t _modbus_tcp_pi_backend = {
     _MODBUS_BACKEND_TYPE_TCP,
     _MODBUS_TCP_HEADER_LENGTH,
     _MODBUS_TCP_CHECKSUM_LENGTH,
@@ -624,7 +630,12 @@ const modbus_backend_t _modbus_tcp_pi_backend = {
     _modbus_tcp_close,
     _modbus_tcp_flush,
     _modbus_tcp_select,
-    _modbus_tcp_filter_request
+    _modbus_tcp_filter_request,
+    _modbus_compute_response_length_from_request,
+    _modbus_compute_meta_length_after_function,
+    _modbus_compute_data_length_after_meta,
+    _modbus_compute_additional_data_length,
+    _modbus_compute_numbers_of_values
 };
 
 modbus_t* modbus_new_tcp(const char *ip, int port)
@@ -652,6 +663,9 @@ modbus_t* modbus_new_tcp(const char *ip, int port)
 
     /* Could be changed after to reach a remote serial Modbus device */
     ctx->slave = MODBUS_TCP_SLAVE;
+
+    ctx->req_buffer = (uint8_t *) malloc(MODBUS_TCP_MAX_ADU_LENGTH * sizeof(uint8_t));
+    ctx->rsp_buffer = (uint8_t *) malloc(MODBUS_TCP_MAX_ADU_LENGTH * sizeof(uint8_t));
 
     ctx->backend = &(_modbus_tcp_backend);
 
@@ -692,6 +706,9 @@ modbus_t* modbus_new_tcp_pi(const char *node, const char *service)
 
     /* Could be changed after to reach a remote serial Modbus device */
     ctx->slave = MODBUS_TCP_SLAVE;
+
+    ctx->req_buffer = (uint8_t *) malloc(MODBUS_TCP_MAX_ADU_LENGTH * sizeof(uint8_t));
+    ctx->rsp_buffer = (uint8_t *) malloc(MODBUS_TCP_MAX_ADU_LENGTH * sizeof(uint8_t));
 
     ctx->backend = &(_modbus_tcp_pi_backend);
 

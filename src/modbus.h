@@ -97,26 +97,30 @@ enum {
     MODBUS_EXCEPTION_NOT_DEFINED,
     MODBUS_EXCEPTION_GATEWAY_PATH,
     MODBUS_EXCEPTION_GATEWAY_TARGET,
+    MODBUS_EXCEPTION_TIMEOUT,
     MODBUS_EXCEPTION_MAX
 };
 
-#define EMBXILFUN  (MODBUS_ENOBASE + MODBUS_EXCEPTION_ILLEGAL_FUNCTION)
-#define EMBXILADD  (MODBUS_ENOBASE + MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS)
-#define EMBXILVAL  (MODBUS_ENOBASE + MODBUS_EXCEPTION_ILLEGAL_DATA_VALUE)
-#define EMBXSFAIL  (MODBUS_ENOBASE + MODBUS_EXCEPTION_SLAVE_OR_SERVER_FAILURE)
-#define EMBXACK    (MODBUS_ENOBASE + MODBUS_EXCEPTION_ACKNOWLEDGE)
-#define EMBXSBUSY  (MODBUS_ENOBASE + MODBUS_EXCEPTION_SLAVE_OR_SERVER_BUSY)
-#define EMBXNACK   (MODBUS_ENOBASE + MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE)
-#define EMBXMEMPAR (MODBUS_ENOBASE + MODBUS_EXCEPTION_MEMORY_PARITY)
-#define EMBXGPATH  (MODBUS_ENOBASE + MODBUS_EXCEPTION_GATEWAY_PATH)
-#define EMBXGTAR   (MODBUS_ENOBASE + MODBUS_EXCEPTION_GATEWAY_TARGET)
+#define EMBXILFUN   (MODBUS_ENOBASE + MODBUS_EXCEPTION_ILLEGAL_FUNCTION)
+#define EMBXILADD   (MODBUS_ENOBASE + MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS)
+#define EMBXILVAL   (MODBUS_ENOBASE + MODBUS_EXCEPTION_ILLEGAL_DATA_VALUE)
+#define EMBXSFAIL   (MODBUS_ENOBASE + MODBUS_EXCEPTION_SLAVE_OR_SERVER_FAILURE)
+#define EMBXACK     (MODBUS_ENOBASE + MODBUS_EXCEPTION_ACKNOWLEDGE)
+#define EMBXSBUSY   (MODBUS_ENOBASE + MODBUS_EXCEPTION_SLAVE_OR_SERVER_BUSY)
+#define EMBXNACK    (MODBUS_ENOBASE + MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE)
+#define EMBXMEMPAR  (MODBUS_ENOBASE + MODBUS_EXCEPTION_MEMORY_PARITY)
+#define EMBXGPATH   (MODBUS_ENOBASE + MODBUS_EXCEPTION_GATEWAY_PATH)
+#define EMBXGTAR    (MODBUS_ENOBASE + MODBUS_EXCEPTION_GATEWAY_TARGET)
+#define EMBXTIMEOUT (MODBUS_ENOBASE + MODBUS_EXCEPTION_TIMEOUT)
+#define EMBXMAX     (MODBUS_ENOBASE + MODBUS_EXCEPTION_MAX)
+
 
 /* Native libmodbus error codes */
-#define EMBBADCRC  (EMBXGTAR + 1)
-#define EMBBADDATA (EMBXGTAR + 2)
-#define EMBBADEXC  (EMBXGTAR + 3)
-#define EMBUNKEXC  (EMBXGTAR + 4)
-#define EMBMDATA   (EMBXGTAR + 5)
+#define EMBBADCRC  (EMBXMAX + 0)
+#define EMBBADDATA (EMBXMAX + 1)
+#define EMBBADEXC  (EMBXMAX + 2)
+#define EMBUNKEXC  (EMBXMAX + 3)
+#define EMBMDATA   (EMBXMAX + 4)
 
 extern const unsigned int libmodbus_version_major;
 extern const unsigned int libmodbus_version_minor;
@@ -142,8 +146,15 @@ typedef enum
     MODBUS_ERROR_RECOVERY_PROTOCOL      = (1<<2),
 } modbus_error_recovery_mode;
 
+typedef enum {
+    /* Request message on the server side */
+    MSG_INDICATION,
+    /* Request message on the client side */
+    MSG_CONFIRMATION
+} msg_type_t;
+
 int modbus_set_slave(modbus_t* ctx, int slave);
-int modbus_set_error_recovery(modbus_t *ctx, modbus_error_recovery_mode error_recovery);
+int modbus_set_error_recovery(modbus_t *ctx, int error_recovery);
 void modbus_set_socket(modbus_t *ctx, int socket);
 int modbus_get_socket(modbus_t *ctx);
 
@@ -155,6 +166,9 @@ void modbus_set_byte_timeout(modbus_t *ctx, const struct timeval *timeout);
 
 int modbus_get_header_length(modbus_t *ctx);
 
+uint8_t *modbus_get_request_buffer(modbus_t *ctx);
+uint8_t *modbus_get_response_buffer(modbus_t *ctx);
+
 int modbus_connect(modbus_t *ctx);
 void modbus_close(modbus_t *ctx);
 
@@ -162,6 +176,7 @@ void modbus_free(modbus_t *ctx);
 
 int modbus_flush(modbus_t *ctx);
 void modbus_set_debug(modbus_t *ctx, int boolean);
+int modbus_get_debug(modbus_t *ctx);
 
 const char *modbus_strerror(int errnum);
 
@@ -194,29 +209,82 @@ int modbus_reply(modbus_t *ctx, const uint8_t *req,
 int modbus_reply_exception(modbus_t *ctx, const uint8_t *req,
                            unsigned int exception_code);
 
+int modbus_send_message(modbus_t *ctx, uint8_t *msg, int msg_length);
+int modbus_check_confirmation(modbus_t *ctx, uint8_t *req, uint8_t *rsp, int rsp_length);
+
+
+/*
+ *  "Virtual" functions
+ */
+
+unsigned int _modbus_compute_response_length_from_request(modbus_t *ctx, uint8_t *req);
+uint8_t      _modbus_compute_meta_length_after_function  (int function, msg_type_t msg_type);
+int          _modbus_compute_data_length_after_meta(modbus_t *ctx, uint8_t *msg, msg_type_t msg_type);
+int          _modbus_compute_additional_data_length(modbus_t *ctx, uint8_t *msg, msg_type_t msg_type, int timedOut);
+void         _modbus_compute_numbers_of_values(const int function, uint8_t *req, uint8_t *rsp, const int offset,
+                                               int *req_nb_value, int *rsp_nb_value);
+
+
 /**
  * UTILS FUNCTIONS
  **/
 
 #define MODBUS_GET_HIGH_BYTE(data) (((data) >> 8) & 0xFF)
 #define MODBUS_GET_LOW_BYTE(data) ((data) & 0xFF)
-#define MODBUS_GET_INT32_FROM_INT16(tab_int16, index) ((tab_int16[(index)] << 16) + tab_int16[(index) + 1])
-#define MODBUS_GET_INT16_FROM_INT8(tab_int8, index) ((tab_int8[(index)] << 8) + tab_int8[(index) + 1])
+#define MODBUS_GET_INT32_FROM_INT16(tab_int16, index) (((tab_int16)[(index)] << 16) + (tab_int16)[(index) + 1])
+#define MODBUS_GET_INT32_FROM_INT16_SWAPPED(tab_int16, index) (((tab_int16)[(index) + 1] << 16) + (tab_int16)[(index)])
+#define MODBUS_GET_FLOAT_FROM_INT16(tab_int16, index) (modbus_get_float(&((tab_int16)[(index)])))
+#define MODBUS_GET_FLOAT_FROM_INT16_SWAPPED(tab_int16, index) (modbus_get_float_swapped(&((tab_int16)[(index)])))
+#define MODBUS_GET_INT16_FROM_INT8(tab_int8, index) (((tab_int8)[(index)] << 8) + (tab_int8)[(index) + 1])
 #define MODBUS_SET_INT16_TO_INT8(tab_int8, index, value) \
     do { \
-        tab_int8[(index)] = (value) >> 8;  \
-        tab_int8[(index) + 1] = (value) & 0xFF; \
+        (tab_int8)[(index)] = (value) >> 8;  \
+        (tab_int8)[(index) + 1] = (value) & 0xFF; \
     } while (0)
+
+#define MODBUS_GET_INT32_FROM_INT8(TAB, IDX) \
+( \
+    ((TAB)[(IDX)    ] << 24) | \
+    ((TAB)[(IDX) + 1] << 16) | \
+    ((TAB)[(IDX) + 2] <<  8) | \
+    ((TAB)[(IDX) + 3]      )   \
+)
+
+#define MODBUS_GET_INT32_FROM_INT8_SWAPPED(TAB, IDX) \
+( \
+    ((TAB)[(IDX)    ] <<  8) | \
+    ((TAB)[(IDX) + 1]      ) | \
+    ((TAB)[(IDX) + 2] << 24) | \
+    ((TAB)[(IDX) + 3] << 16)   \
+)
+
+#define MODBUS_SET_INT32_TO_INT8(TAB, IDX, VAL) \
+{ \
+    (TAB)[(IDX)    ] =  (VAL)               >> 24; \
+    (TAB)[(IDX) + 1] = ((VAL) & 0x00FF0000) >> 16; \
+    (TAB)[(IDX) + 2] = ((VAL) & 0x0000FF00) >>  8; \
+    (TAB)[(IDX) + 3] =  (VAL) & 0x000000FF       ; \
+}
+
+#define MODBUS_SET_INT32_TO_INT8_SWAPPED(TAB, IDX, VAL) \
+{ \
+    (TAB)[(IDX)    ] = ((VAL) & 0x0000FF00) >>  8; \
+    (TAB)[(IDX) + 1] =  (VAL) & 0x000000FF       ; \
+    (TAB)[(IDX) + 2] =  (VAL)               >> 24; \
+    (TAB)[(IDX) + 3] = ((VAL) & 0x00FF0000) >> 16; \
+}
 
 void modbus_set_bits_from_byte(uint8_t *dest, int index, const uint8_t value);
 void modbus_set_bits_from_bytes(uint8_t *dest, int index, unsigned int nb_bits,
                                 const uint8_t *tab_byte);
 uint8_t modbus_get_byte_from_bits(const uint8_t *src, int index, unsigned int nb_bits);
 float modbus_get_float(const uint16_t *src);
+float modbus_get_float_swapped(const uint16_t *src);
 void modbus_set_float(float f, uint16_t *dest);
 
 #include "modbus-tcp.h"
 #include "modbus-rtu.h"
+#include "modbus-d2x.h"
 
 MODBUS_END_DECLS
 

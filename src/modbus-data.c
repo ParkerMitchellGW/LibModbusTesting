@@ -85,6 +85,18 @@ float modbus_get_float(const uint16_t *src)
     return f;
 }
 
+/* Get a swapped float from 4 bytes in Modbus format */
+float modbus_get_float_swapped(const uint16_t *src)
+{
+    float f = 0.0f;
+    uint32_t i;
+
+    i = (((uint32_t)src[0]) << 16) + src[1];
+    memcpy(&f, &i, sizeof(float));
+
+    return f;
+}
+
 /* Set a float to 4 bytes in Modbus format */
 void modbus_set_float(float f, uint16_t *dest)
 {
